@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>icon_account_active</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-157.000000, -2212.000000)">
+            <g id="icon_account_active" transform="translate(157.000000, 2212.000000)">
+                <g>
+                    <rect id="矩形备份-29" x="0" y="0" width="24" height="24"></rect>
+                    <g id="编组-22备份" transform="translate(2.000000, 2.000000)" fill="#FCC900" stroke="#0D0D0D">
+                        <circle id="椭圆形备份-2" cx="10" cy="10" r="9.5"></circle>
+                        <path d="M3.50024067,16.9284912 C5.24765225,18.5688728 7.54974615,19.5 10,19.5 C12.4497131,19.5 14.7514184,18.5692864 16.4996234,16.9292977 C16.4617123,13.3720165 13.5662539,10.5 10,10.5 C6.43136833,10.5 3.53442687,13.3758477 3.50024067,16.9284912 Z" id="形状结合"></path>
+                        <circle id="椭圆形" cx="10" cy="7" r="3.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

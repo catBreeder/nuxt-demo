@@ -1,0 +1,262 @@
+/*公共样式*/
+*{
+  padding:0;
+  margin:0;
+}
+html,body{height: 100%;}
+html{
+  touch-action: none;
+}
+a{
+  color:#2A2A2A;
+}
+.navbar-title{
+  font-size: 16px;
+  font-weight: bold;
+}
+/*头部标题*/
+.sticky_title_common{
+  font-size:18px;
+  font-weight: 500;
+}
+.g_mb_m{
+  margin-bottom: 8px;
+}
+.g_mb_s{
+  margin-bottom: 4px;
+}
+.g_mb_l{
+  margin-bottom: 12px;
+}
+.g_mr_l{
+  margin-right: 12px;
+}
+.g_mr_m{
+  margin-right: 8px;
+}
+.g_mr-s{
+  margin-right: 4px;
+}
+.g_mt_s{
+  margin-top: 4px;
+}
+.g_mt_m{
+  margin-top: 8px;
+}
+.g_mt_l{
+  margin-top: 12px;
+}
+.g_mb_big{
+  margin-bottom: 20px;
+}
+.g_bg{
+  background-color: #eee !important;
+}
+.g_ml_m{
+  margin-left: 8px;
+}
+.g_pl_l{
+  margin-left: 12px;
+}
+.g_ml_l{
+  margin-left: 12px;
+}
+.g_ml_s{
+  margin-left: 4px;
+}
+.g_pb_m{
+  padding-bottom: 8px;
+}
+.g_pt_m{
+  padding-top: 8px;
+}
+.g_pl_m{
+  padding-left: 8px;
+}
+.bg_white{
+  background-color: #fff;
+}
+.bg_active{
+  color:#fcc900
+}
+.bg_green{
+  color:#265D36;
+}
+.font_w{
+  font-weight: bold;
+}
+.d_flex{
+  display: flex;
+  align-items: center;
+}
+.d_flex_around{
+  justify-content: space-around;
+}
+.d_flex_between{
+  justify-content: space-between;
+}
+.d_flex_end{
+  justify-content: flex-end;
+}
+.d_flex_center{
+  justify-content: center;
+}
+.d_flex_start{
+  justify-content: flex-start;
+}
+.flex_1{
+  flex:1;
+}
+.color_intro{
+  color:#888888;
+}
+.color_warning{
+  color:#ed5565;
+}
+.color_normal{
+  color:#2A2A2A;
+}
+.color_orange{
+  color:#ff976a
+}
+.color_orange_red{
+  color:#FF4500;
+}
+.color_oranged{
+  color:#ff6000;
+}
+.color_blue{
+  color:#3597FF
+}
+.color_active{
+  color:#fcc900
+}
+.color_gray{
+  color:#696969;
+}
+.text-align{
+  text-align: center;
+}
+.text_align_r{
+  text-align: right;
+}
+.text_align_l{
+  text-align: left;
+}
+.b_border{
+  border-bottom:1px solid lightgrey
+}
+.b_border_dash{
+  border-bottom:1px dashed #EEEEED;
+}
+.font-size_n{
+  font-size:14px;
+}
+/*//navbar的标题*/
+.navbar_title{
+  font-size:18px;
+}
+.text-ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+.text_ellipsis_2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.text_ellipsis_3{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.text_ellipsis_1{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+}
+.font_size_loading{
+  font-size:16px;
+}
+/*暂无数据的图片*/
+.custom-image{
+  margin:40px auto;
+}
+.discount_tag{
+  text-decoration: line-through;
+  font-weight: 300;
+  font-size:10px;
+  color:#ddd;
+}
+
+/*loading修改*/
+.loading_custome{
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+/*头部导航栏+底部banner*/
+.scrollCommonHeightView{
+  height:calc(100vh - 46PX - 49PX);
+  background-color: #EEEEEE;
+}
+/*头部导航栏，没有底部banner*/
+.scrollHeightNoBar{
+  height:calc(100vh - 46PX);
+  background-color: #EEEEEE;
+}
+.scrollHeightAll{
+  height:calc(100vh);
+  background-color: #F2F2F2;
+}
+/*字体*/
+.font_size_14{font-size: 14PX}
+.font_size_15{font-size:15PX;}
+.font_size_16{font-size:16PX;}
+.font_size_18{font-size:18PX;}
+.font_size_20{font-size:20PX;}
+.font_size_12{font-size:12PX;}
+.font_size_13{font-size:13PX;}
+.introjs-tooltip-header{
+  display: none !important;
+}
+.introjs-tooltiptext{
+  padding:20px 15px;
+  line-height: 1.7;
+  font-size:13px;
+}
+.introjs-button:focus{
+  box-shadow: none;
+}
+.introjs-nextbutton,.introjs-button:focus{
+  border-color:orange;
+  color:#fcc900;
+}
+/*价格有关的css样式*/
+.price-normal{
+  color:#fa2c19;
+  line-height: 25px;
+  font-family: JDZhengHT-EN-Regular;
+  font-weight: bold;
+  font-size:16px;
+}
+.discount_price{
+    font-size:12px;
+    color:gray;
+    font-weight: normal;
+}
+/*与按钮有关的样式*/
+/*黄底黑字*/
+.van-button--primary{
+  color:#2a2a2a !important;
+}
+.mescroll-empty .empty-icon {
+  width: 120px !important;
+  margin-top: 20vh}

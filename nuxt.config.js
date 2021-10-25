@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-demo',
+    title: 'shopshipshake',
     htmlAttrs: {
       lang: 'en'
     },
@@ -22,7 +22,8 @@ export default {
   
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/css/reset.css'
+    '@/assets/css/reset.css',
+    '@/assets/css/common.css',
   ],
   router:{
     base:'/shop',
@@ -37,24 +38,49 @@ export default {
           path: '/shoppingmall/index',
           name:'home',
           component:resolve(__dirname,'pages/Home/index.vue'),
+          meta:{
+            content:'Home',
+            analyTitle:'首页'
+          }
 
         },
         {
-          path: '/shop/shoporder/cart',
+          path: '/shoporder/cart',
           name:'Cart',
           component:resolve(__dirname,'pages/Cart/index.vue'),
-
+          meta:{
+            analyTitle:'购物车',
+            content:'Cart',
+          }
+        },
+        {
+          path: '/user/recharge',
+          name:'Recharge',
+          component:resolve(__dirname,'pages/Recharge/index.vue'),
+          meta:{
+           
+          analyTitle:'充值',
+          content:'Recharge'
+          }
         },
         {
           path: '/shoporder/2/index',
           name:'Orders',
           component:resolve(__dirname,'pages/Orders/index.vue'),
+          meta:{
+            analyTitle:'我的订单',
+            content:'My Orders',
+          }
 
         },
         {
           path: '/account/index',
           name:'Account',
           component:resolve(__dirname,'pages/Account/index.vue'),
+          meta:{
+            analyTitle:'个人账号',
+            content:'My Account',
+          }
 
         },
       )
@@ -68,6 +94,17 @@ export default {
       src: '@/plugins/lib-flexible',
       ssr: false //不设置会报错
     },
+    {
+      src: '@/plugins/gTag.js',
+      ssr: true //不设置会报错
+    },
+    {
+      src: '@/plugins/eventBus.js',
+      ssr: true //不设置会报错
+    },
+    '@/plugins/directives.js',
+    {src:'@/plugins/router.js',ssr:false},
+    {src:'@/plugins/intro.js',ssr:false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -84,7 +121,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-
+    extractCSS: { allChunks: true },
     //修改vant主题颜色
     extend(config, ctx) {
       config.module.rules.push({

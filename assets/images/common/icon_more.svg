@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>icon_more</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="下单" transform="translate(-331.000000, -28.000000)">
+            <g id="icon_more32" transform="translate(327.000000, 24.000000)">
+                <g id="icon_more-2">
+                    <g transform="translate(4.000000, 4.000000)">
+                        <g id="icon_more">
+                            <g>
+                                <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+                                <path d="M4,10.0117188 C5.1,10.0117188 6,10.9117188 6,12.0117188 C6,13.1117187 5.1,14.0117188 4,14.0117188 C2.9,14.0117188 2,13.1117187 2,12.0117188 C2,10.9117188 2.9,10.0117188 4,10.0117188 Z M12,10.0117188 C13.1,10.0117188 14,10.9117188 14,12.0117188 C14,13.1117187 13.1,14.0117188 12,14.0117188 C10.9,14.0117188 10,13.1117187 10,12.0117188 C10,10.9117188 10.9,10.0117188 12,10.0117188 Z M20,10.0117188 C21.1,10.0117188 22,10.9117188 22,12.0117188 C22,13.1117187 21.1,14.0117188 20,14.0117188 C18.9,14.0117188 18,13.1117187 18,12.0117188 C18,10.9117188 18.9,10.0117188 20,10.0117188 Z" id="形状" fill="#F2F2F2" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

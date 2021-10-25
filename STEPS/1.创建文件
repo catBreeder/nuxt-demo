@@ -1,0 +1,11 @@
+npx create-nuxt-app 项目名(项目名不能有大写字母)
+选择选项时要选择uniserval(ssr)
+-------
+修改项目运行的地址ip
+package.json中配置
+"config":{
+    "nuxt":{
+        "port":"8080,
+        "host":"电脑的ip"
+      }
+}

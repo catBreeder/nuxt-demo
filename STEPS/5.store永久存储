@@ -1,0 +1,14 @@
+1.安装插件
+npm install vuex-persistedstate
+2.plugins中新建localStorage.js
+import createPersistedState from 'vuex-persistedstate'
+export default ({store}) => {
+  createPersistedState({
+    storage: localStorage,
+  })(store)
+}
+3.nuxt.config.js中引入
+plugins:[
+  {src:'@/plugins/localStorage.js',ssr:false}
+]
+

@@ -204,6 +204,7 @@ export default  {
   'account_user_update_email':`/api/user/updateEmail`,//发送新手机验证码
   'account_user_info_update':`/api/user/update`,//更改个人信息
   'account_user_invite_list':`/api/user/invitationlist`,//推广名单
+
   'account_bill_list':`/api/bill/getList`,//账单
   'account_user_to_transfer':`/api/user/toTransfer`,//transfer信息
   'account_user_update_password':`/api/updatepwd/updatepassword`,//transfer信息
@@ -212,6 +213,7 @@ export default  {
   'account_customer_task_todo':`/api/customertask/todo`,//推广任务
   'account_task_todo_verify':`/api/customertask/todo/verifypage`,//推广任务验证
   'account_customer_task_promotion':`/api/customertask/promotion`,//推广任务验证
+  'account_customer_task_promotion_list':`/api/customertask/getpromotionList`,//推广名单
   'account_scoin_index':`/api/scoin/index`,//积分信息
   'account_scoin_list':`/api/scoin/list`,//积分明细
   'account_change_member_status':`/api/groupship/changeFlag`,//积分明细
@@ -245,7 +247,7 @@ export default  {
   /*售后结束*/
 
 //  商城
-'account_shopping_mall_set_remind_times':`/api/shoppingmall/settempremindtimes`,
+  'account_shopping_mall_set_remind_times':`/api/shoppingmall/settempremindtimes`,
 
 
 //  shopify模块
@@ -254,10 +256,14 @@ export default  {
   'shopify_listed_Archived_list':'/api/shopify/list',
   'shopify_person_info':'/api/shopify/personalinfo',
   'shopify_share_to_store':'/api/shopify/sharetoshopify',//商品上架
+  'shopify_private_share_to_store':'/api/shopify/sharetoshopifyprivate',//商品上架
   'shopify_store_count':'/api/shopify/storecount',//
   'shopify_store_delete':'/api/shopify/store_del',//删除商品
   'shopify_archive':'/api/shopify/archive',//商品下架
   'shopify_archive_to_list':'/api/shopify/archivetolist',//商品重新上架
   'shopify_author_verify':'/api/shopify/authorization_verify',//添加商品
+  'shopify_category_list':'/api/category/list',//添加商品
+  'shopify_private_list':'/api/shopify/privateproductlist',//添加商品
+  'shopify_private_remove':'/api/shopify/removeProductprivate',//添加商品
 
 }

@@ -209,7 +209,7 @@ a{
 }
 /*头部导航栏，没有底部banner*/
 .scrollHeightNoBar{
-  height:calc(100vh - 46PX);
+  height:calc(100vh - 45PX);
   background-color: #EEEEEE;
 }
 .scrollHeightAll{

@@ -1,26 +1,30 @@
-const state =()=>({
-    userInfo:null,
-    accessToken:null,
-    refreshToken:null
+
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const store = () => new Vuex.Store({
+    state: {
+        checkoutInfo:null,
+        checkoutErrorInfo:null,
+
+    },
+    mutations: {
+        setCheckoutInfo(state,value){
+          state.checkoutInfo = value;
+        },
+        removeCheckoutInfo(state){
+          state.checkoutInfo =null
+        },
+        //设置checkout信息
+        setCheckoutErrorInfo(state,value){
+          state.checkoutErrorInfo = value;
+        },
+        removeCheckoutErrorInfo(state){
+          state.checkoutErrorInfo = null
+        }
+    }
 })
 
-//改变状态值
-const mutations ={
-    //状态置空
-    RESET_USER_STATE(state){
-        state.userInfo = null;
-        state.accessToken = null;
-        state.refreshToken = null;
-    }
-}
-
-const actions ={
-    KoginPage({commit}){
-        commit('RESET_USER_STATE')
-    }
-}
-export default {
-    state,
-    mutations,
-    actions
-}
+export default store

@@ -26,7 +26,7 @@
   }
   store中使用
   actions:{
-      
+
   }
  */
 //1.插件方式解耦在nuxtjs中调用api
@@ -52,7 +52,7 @@
 /*
   1.自动配置
   2.手动配置
-  
+
 
 */
 //3.中间件
@@ -65,9 +65,7 @@
   middleware/auth 其中文件名auth就是中间件名称
   一个中间件接受context作为第一个参数
   export default({store,redirect})=>{
-      if(!store || !store.state.userInfo){
-          return redirect('/)
-      }
+
   }
   组件中声明使用：middleware:'author'
 */

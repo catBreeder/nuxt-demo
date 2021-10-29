@@ -5,4 +5,3 @@ export const gTagFun =(event_action,event_category,event_label)=>{
       event_label
     });
   }
-  

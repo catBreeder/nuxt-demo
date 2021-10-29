@@ -19,7 +19,8 @@
 
 <script>
 import homeImg from '@/assets/images/Footer/home.png'
-
+import { gTagFun } from '@/utils/buryPoint/gTag'
+import {getCurrentPage} from "../utils/memory";
 
 export default {
   name: "Footer",
@@ -46,22 +47,27 @@ export default {
       ]
     }
   },
+  computed:{
+    currentPageValue(){
+      return getCurrentPage()
+    }
+  },
   methods: {
     tabChangeHandle(item){
       this.$router.replace(item.path)
       this.tabIndex = item.id;
       if (this.tabIndex == 2) {
-        if (this.currentPage == 'shoppingmall') {
+        if (this.currentPageValue == 'shoppingmall') {
           gTagFun('Navigation_Recharge', '从导航打开Recharge', '首页')
-          if (this.currentPage == 'billIndex') {
+          if (this.currentPageValue == 'billIndex') {
             gTagFun('Account_Balance_Recharge', '从Account_Balance打开Recharge', 'Account_Balance')
           }
-          if (this.currentPage == 'account') {
+          if (this.currentPageValue == 'account') {
             gTagFun('Account_Recharge', '从Account打开Recharge', 'Account')
           }
         }
       }else if(this.tabIndex==5){
-        if (this.currentPage == 'shoppingmall') {
+        if (this.currentPageValue == 'shoppingmall') {
           gTagFun('Navigation_Account', '从导航打开Account', '首页')
         }
       }
@@ -80,17 +86,15 @@ export default {
     this.$EventBus.$on('toAccount',()=>{
          this.tabIndex = 5;
     })
-    // if(process.client){
-    //   if(window.location.pathname.indexOf('/user/recharge')!==-1 ){
-    //   this.tabIndex = 2;
-    // }
-    // if(window.location.pathname.indexOf('/shoporder/2/index')!==-1){
-    //   this.tabIndex = 4;
-    // }
-    // if(window.location.pathname.indexOf('/account/index')!==-1){
-    //   this.tabIndex = 5;
-    // }
-    // }
+    if(window.location.pathname.indexOf('/user/recharge')!==-1 ){
+      this.tabIndex = 2;
+    }
+    if(window.location.pathname.indexOf('/shoporder/2/index')!==-1){
+      this.tabIndex = 4;
+    }
+    if(window.location.pathname.indexOf('/account/index')!==-1){
+      this.tabIndex = 5;
+    }
   }
 
 

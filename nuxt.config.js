@@ -32,6 +32,9 @@ export default {
     // baseUrl:'http://192.168.0.46:38080',
 
   },
+  server:{
+    port:env[process.env.NODE_ENV].ENV_PORT
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/reset.css',

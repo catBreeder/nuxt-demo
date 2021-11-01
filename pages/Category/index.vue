@@ -140,11 +140,9 @@
           res.forEach(item=>{this.categoryName.push({id:item.id,name:item.ename})})
           this.allList = res;
           if(!getCategoryID()){
-            console.log('138')
             this.categoryId = res[0].id;
             this.getProductList(res[0].id)
           }else{
-            console.log('142',getCategoryID())
             this.categoryActive =getCategoryID().index;
             this.categoryId = getCategoryID().id;
             this.getProductList(this.categoryId)

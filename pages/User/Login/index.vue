@@ -168,7 +168,9 @@
             setUserTicket(res.data.ticket)
             setLoginInfo(res.data);
             setUserID(res.data.id)
-            setCustomerIdentity(res.data.customeridentity)
+            if(res.data.customeridentity){
+              setCustomerIdentity(res.data.customeridentity)
+            }
             setUserType(res.data.usertype)
             this.$sensors.login(res.data.id)
             JsCookie.remove('origUrl')

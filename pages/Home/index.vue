@@ -93,7 +93,7 @@
             <div class="share-product-info-img">
               <van-swipe  @change="swiperChangeHandle"  v-if="shareItem && shareItem.images && shareItem.images.length">
                 <van-swipe-item v-for="(item, index) in shareItem.images" :key="index">
-                  <img v-lazy="item" style="border-radius: 10px"/>
+                  <img :src="item" style="border-radius: 10px"/>
                 </van-swipe-item>
               </van-swipe>
             </div>

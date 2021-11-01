@@ -1,7 +1,7 @@
+
 const env = require('./env')
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  target: 'static',
   head: {
     title: 'shopshipshake',
     htmlAttrs: {
@@ -28,7 +28,9 @@ export default {
     ]
   },
   env:{
-    baseUrl:env[process.env.NODE_ENV].ENV_API
+    baseUrl:env[process.env.NODE_ENV].ENV_API,
+    // baseUrl:'http://192.168.0.46:38080',
+
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -340,8 +342,8 @@ export default {
 
         },
 
-  //-------------recharge结束-----------------
-  //------------order 开始 --------------------
+        //-------------recharge结束-----------------
+        //------------order 开始 --------------------
         {
           path: '/shoporder/2/index',
           name:'OrdersIndex',
@@ -780,7 +782,7 @@ export default {
           }
 
         },
-/*---------------------第三版登录注册----------------*/
+        /*---------------------第三版登录注册----------------*/
         {
           path: '/login',
           name: 'login',
@@ -817,17 +819,23 @@ export default {
 
           }
         },
-/*------------登录注册结束-----------------*/
-/*------------shopify结束-----------------*/
+        /*------------登录注册结束-----------------*/
+        /*------------shopify结束-----------------*/
         {
           path:'/shopify/index',
           name:'ShopifyIndex',
           component:resolve(__dirname,'pages/Shopify/index.vue'),
+          meta:{
+            hideTabbar:true
+          }
         },
         {
           path:'/shopify/tutorial',
           name:'ShopifyTutorial',
           component:resolve(__dirname,'pages/Shopify/Tutorial/index.vue'),
+          meta:{
+            hideTabbar:true
+          }
         },
         {
           path:'/shopify/contact',
@@ -837,7 +845,7 @@ export default {
             hideTabbar:true
           }
         },
-/*------------shopify结束-----------------*/
+        /*------------shopify结束-----------------*/
       )
     }
   },
@@ -864,8 +872,8 @@ export default {
     '@/plugins/clipBoard.js',
     {src:'@/plugins/router.js',ssr:false},
     {src:'@/plugins/intro.js',ssr:false},
-   {src: '@/plugins/sensor.js',ssr:false},
-   {src: '@/plugins/vueCropper.js',ssr:false},
+    {src: '@/plugins/sensor.js',ssr:false},
+    {src: '@/plugins/vueCropper.js',ssr:false},
     { src: '@/plugins/localStorage.js', ssr: false },
     {src: '@/plugins/main', ssr: true},
     {src:'@/plugins/exposure.js',ssr:false},
@@ -919,3 +927,4 @@ export default {
     },
   }
 }
+

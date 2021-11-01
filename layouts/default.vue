@@ -442,15 +442,19 @@ export default {
       })
     },
     getPopupInfo(){
+
       if(!this.$route.path) return;
       //未登录仅仅在首页弹出
       if(!getUserID() && !(this.$route.path=='/shoppingmall/index' ||  this.$route.path=='/')) return;
       //登录检车session标记
       let interrupt_popupwindow_login = window.sessionStorage.getItem('interrupt_popupwindow_login')==1;
+      console.log(interrupt_popupwindow_login);
       if(getUserID() && interrupt_popupwindow_login){
         return;
       }
+
       let path = this.$route.path=='/shoppingmall/index'?'/home':this.$route.path;
+
       showPopupApi(`/shop${path}`).then(res=>{
         if(Number(res.status)!=500){
           if(res.message==this.$config.popupType.GUIDE){
@@ -519,6 +523,7 @@ export default {
     })
   },
   mounted() {
+
     this.evaluateRef = this.$refs.evaluateRef;
     this.getPopupInfo()
   },

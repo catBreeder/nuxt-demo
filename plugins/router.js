@@ -35,6 +35,10 @@ export default ({app})=>{
         removeSensorData();
         removeCartQualityFlag();
         removeCustomerIdentity();
+        localStorage.removeItem('top100Info')
+        localStorage.removeItem('HomeProductModal')
+        localStorage.removeItem('changeTab');
+
       }
         next()
     })

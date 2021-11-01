@@ -8,6 +8,7 @@ const store = () => new Vuex.Store({
     state: {
         checkoutInfo:null,
         checkoutErrorInfo:null,
+        categoryInfo:null
 
     },
     mutations: {
@@ -23,6 +24,14 @@ const store = () => new Vuex.Store({
         },
         removeCheckoutErrorInfo(state){
           state.checkoutErrorInfo = null
+        },
+
+        //设置类目列表
+        setCategory(state,value){
+          state.categoryInfo = value;
+        },
+        removeCategory(state){
+          state.categoryInfo=null
         }
     }
 })

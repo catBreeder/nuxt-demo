@@ -207,7 +207,7 @@ export default {
         maxprice:this.maxPrice
       }
       option ={...{
-          categoryid:this.$route.params.categoryID,
+          categoryid:this.$route.query.categoryID,
           thirdid:this.categoryFilter>0?this.categoryFilter:null
         },...common}
       queryProductsByCategoryApi(option).then(res=>{
@@ -352,7 +352,7 @@ export default {
         maxprice:this.maxPrice
       }
       option ={...{
-          categoryid:this.$route.params.categoryID,
+          categoryid:this.$route.query.categoryID,
           thirdid:this.categoryFilter>0?this.categoryFilter:null
         },...common}
       queryProductsByCategoryApi(option).then(res=>{
@@ -376,7 +376,7 @@ export default {
 
     },
     getCategoryName(){
-      childCategoriesApi(this.$route.params.categoryID).then(res=>{
+      childCategoriesApi(this.$route.query.categoryID).then(res=>{
         res=[...commonList,...res];
         res.map(item=>{
           item.text =item.ename;

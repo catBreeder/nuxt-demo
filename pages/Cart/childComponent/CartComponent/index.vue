@@ -625,6 +625,7 @@
 
       //获取购物车基本信息
       cartBasicInfoHandle() {
+
         accountBasicInfoApi().then(res=>{
           if(res.isleader == this.$config.orderUserType.BIGCUSTOMER ||
             res.isleader == this.$config.orderUserType.MEMBER ||

@@ -1,5 +1,0 @@
-在css文件夹下创建reset.css ,引入浏览器默认样式
-在nuxt.config.js中配置
-css:{
-    '@/assets/css/reset.css'
-}

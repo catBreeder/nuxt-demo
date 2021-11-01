@@ -435,7 +435,7 @@
       },
       clearAllHandle() {
         localStorage.clear();
-        removeSearchHistory();
+          removeSearchHistory();
           removeUserTicket();
           removeLoginInfo();
           removeRegisterInfo();
@@ -451,6 +451,10 @@
           removeSensorData();
           removeCartQualityFlag();
           removeCurrentPage();
+          localStorage.removeItem('top100Info')
+          localStorage.removeItem('HomeProductModal')
+          localStorage.removeItem('changeTab');
+          sessionStorage.removeItem('interrupt_popupwindow_login');
       },
       goOrderHandle(type) {
         this.$router.replace(`/shoporder/2/index?tagIndex=${type}`);

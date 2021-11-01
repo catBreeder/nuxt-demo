@@ -82,7 +82,6 @@ export default {
            })
               break;
       }
-      console.log(option)
       spmLogApi(option).then(res=>{
         JsCookie.set('currentPageSpmValue',res.spmid)
       })
@@ -96,10 +95,6 @@ export default {
     return{
       seoSetting:res
     }
-
-  },
-  methods:{
-
   },
 }
 </script>

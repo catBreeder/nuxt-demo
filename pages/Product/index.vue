@@ -1,9 +1,9 @@
 <template>
   <div class="product-detail-content">
     <div class="product-detail-wrapper" v-if="!isEmpty">
-      <van-nav-bar fixed >
+      <van-nav-bar fixed @click-left="goBackHandle" >
         <template #right>
-          <div class="product-title-right d_flex" v-show="!isShopifyProduct">
+          <div class="product-title-right d_flex" v-show="!isShopifyBtn">
             <div class="product-btn product-btn-cart" @click.stop="navbarOperateHandle('cart')" />
             <div class="product-btn product-btn-share"  @click.stop="navbarOperateHandle('share')"/>
             <van-popover  placement="bottom-end"
@@ -80,7 +80,7 @@
               <span v-else class="font_size_13"> (Platinum&Golden members only)</span>
             </div>
             <!--是否是1688商品-->
-            <div v-if="productBasicInfo.is1688product && !isShopifyProduct"  class="item-count font_size_13" @click="showEstimatePopupHandle">
+            <div v-if="productBasicInfo.is1688product && !isShopifyBtn"  class="item-count font_size_13" @click="showEstimatePopupHandle">
               <span class="color_normal"> Exclude International Delivery</span>
               <span class="sea-tag" >Estimate Shipping Cost &gt;</span>
             </div>
@@ -90,7 +90,7 @@
               <div>It is more economical to purchase in multiples of the suggested quantity</div>
             </div>
             <!--判断是不是百优的商品-->
-            <div style="margin:8px -8px 4px;" v-if="!isShopifyProduct">
+            <div style="margin:8px -8px 4px;" v-if="!isShopifyBtn">
               <div v-if="shopproduct.type==1">
                 <router-link to="/supplier/product/index" >
                   <img src="~assets/images/top100/banner_from_home.png" alt="" width="100%">
@@ -196,7 +196,7 @@
       </div>
       <!--      底部定位-->
       <div class="product_footer">
-        <template v-if="isShopifyProduct">
+        <template v-if="isShopifyBtn">
           <div class="product_shopify_inner">
             <van-button class="shopify-btn" block plain type="primary" @click="shareToShopifyHandle">
               <img src="@/assets/images/shopify/shopify_icon.svg" alt="">
@@ -371,7 +371,7 @@
                 </div>
               </div>
             </div>
-            <div class="d_flex d_flex_around product-price-btn" v-show="!isShopifyProduct">
+            <div class="d_flex d_flex_around product-price-btn" v-show="!isShopifyBtn">
               <van-button v-prevent-re-click class="cart-btn" size="large" @click="createOrderFromPopHandle">Add to Cart</van-button>
               <van-button v-prevent-re-click plain class="remark-btn" size="large" @click="remarkHandle">Add Remark</van-button>
             </div>
@@ -470,7 +470,7 @@
               <div class="share-product-info-img">
                 <van-swipe  @change="swiperChangeHandle" :loop="false" height="360px" v-if="shareItem.images && shareItem.images.length">
                   <van-swipe-item v-for="(item, index) in shareItem.images" :key="index">
-                    <img v-lazy="item" style="border-radius: 10px"/>
+                    <img :src="item" style="border-radius: 10px"/>
                   </van-swipe-item>
                 </van-swipe>
               </div>
@@ -541,10 +541,48 @@
   import {shareInfoApi ,shareInitApi} from '@/api/home'
   import {getLoginInfo, getRefSpm, setCurrentPage} from "../../utils/memory";
   export default {
+    head(){
+      return {
+        title:`${this.seoSetting.title} - shopshipshake`,
+        meta:[
+          {
+            hid:'description',
+            name:'description',
+            content:`${this.seoSetting.title}`
+          },
+          {
+            hid:'og:description',
+            name:'og:description',
+            content:`${this.seoSetting.title}`
+          },
+          {
+            hid:'keywords',
+            name:'keywords',
+            content:`${this.seoSetting.title}`
+          },
+          {
+            hid:'og:title',
+            name:'og:title',
+            content:`${this.seoSetting.title}`
+          },
+          {
+            hid:'og:type',
+            name:'og:type',
+            content:'product'
+          },
+          {
+            hid:'og:image',
+            name:'og:image',
+            content:this.seoSetting.productImg
+          },
+        ]
+      }
+    },
     name: "index",
     components: {ScrollView, EstimatePopup,AddToCartNoticePopup,CommonDialog,CommonProductSwiper,CommonDialogOperate,CommonRemoveProduct},
     data() {
       return {
+        seoSetting:{},
         showPopover:false,
         actions: [
           { text: 'Home',icon: 'wap-home-o',value:'home'},
@@ -616,6 +654,9 @@
       //判断是不是shopify商品
       isShopifyProduct(){
         return getLoginInfo() && getLoginInfo().shopifyflg==1  && ((this.shopproduct && this.shopproduct.shopifyflg==1) || (this.productBasicInfo.oneorderflg && this.productBasicInfo.oneorderflg==1))
+      },
+      isShopifyBtn(){
+        return getLoginInfo() && getLoginInfo().shopifyflg==1 && this.productBasicInfo && this.productBasicInfo.showShopifyBtn==1
       },
       totalWeight(){
         return (this.totalCount * this.skuinfos.aveweight).toFixed(1) +'KG'
@@ -768,6 +809,9 @@
           case 'orders':this.$router.replace('/shoporder/2/index');break
         }
         this.showPopover = false;
+      },
+      goBackHandle(){
+        this.$router.back();
       },
       navbarOperateHandle(type){
         switch (type) {
@@ -1067,8 +1111,6 @@
         }else{
           this.isShowStore = true;
         }
-
-
       },
       //添加购物车
       createOrderHandle(){
@@ -1188,6 +1230,7 @@
         this.selectedList[this.colorTitle]={...newArray};
       },
       checkSizeHandle(){
+        // window.open(`${this.$config.jianweiDomain}/helpcenter/sizeguide`)
         this.$router.push('/helpcenter/sizeguide')
       },
 
@@ -1224,12 +1267,12 @@
       },
       getProductDetailHandle() {
         this.isLoading = true;
-        const {categoryid, productid, spm} = this.$route.query;
+        const {categoryid, productid, spm,sf} = this.$route.query;
         productDetailApi({
           productid,
           categoryid,
           spm,
-          sf: 0
+          sf: sf?sf:0
         }).then(res => {
           if(res){
             this.productBasicInfo = res;
@@ -1279,8 +1322,8 @@
               this.checkFlag = true;
             }
             this.isLoading = false;
-            //seo优化
-            this.optimizePageHandle(res)
+            // //seo优化
+            // this.optimizePageHandle(res)
             /*获取价格*/
             this.getProductPriceHandle();
           }else{
@@ -1320,7 +1363,6 @@
       },
       /*
       SEO优化
-      * */
       optimizePageHandle(product){
         const {skuinfos,productInfo,seokeywords,content} = product;
         let metaList = document.getElementsByTagName("meta");
@@ -1348,6 +1390,8 @@
           }
         }
       },
+      * */
+
     },
     created() {
       this.$EventBus.$on('remarkEvent',result=>{
@@ -1373,6 +1417,9 @@
       next();
     },
     beforeRouteEnter(to,from,next){
+      if(to.query.sf==1){
+        to.meta.isQuestion = false;
+      }
       if(from.path!='/'){
         setRefer(config.jianweiDomain +from.path)
       }
@@ -1389,6 +1436,25 @@
       })
       next();
     },
+    async asyncData({query}){
+      let {productid,categoryid,sf,spm} = query;
+      let res = await  productDetailApi({
+        productid,
+        categoryid,
+        spm,
+        sf: sf?sf:0
+      })
+        let {skuinfos,productInfo,seokeywords,content} = res;
+        let titleValue = content!=null ?seokeywords: skuinfos.productnameen;
+        let productImg = productInfo.images[0];
+        let seoSetting={
+          title:`${titleValue}`,
+          productImg
+        }
+        return {
+          seoSetting
+        }
+    }
   }
 </script>
 

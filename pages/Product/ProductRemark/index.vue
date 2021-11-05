@@ -105,7 +105,6 @@
       choseMobileTypeHandle(event){
         if(event){
           this.isVisible = false;
-          console.log(event);
           this.mobile = event.countryCode;
           this.countryCount = event.count;
         }
@@ -117,9 +116,8 @@
             break;
           case 'confirm':
             if(this.formValidate()){
-              this.goBackHandle()
               this.$EventBus.$emit('remarkEvent',this.user);
-
+              this.goBackHandle()
             }
             break;
         }

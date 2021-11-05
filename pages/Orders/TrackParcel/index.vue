@@ -630,7 +630,7 @@ import ScrollView from "@/components/common/ScrollView";
     padding:30px 10px 50px;
   }
   .trackScroll{
-    height:calc(100vh - 150px - 46px);
+    height:calc(100vh - 150PX - 46PX);
   }
   .track_content_top{
     /*border:1px solid #EEEEED;*/

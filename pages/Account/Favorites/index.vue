@@ -18,7 +18,7 @@
    </van-sticky>
    <scroll-view  class="favoriteScroll"  @reachBottom="loadMoreHandle">
      <van-loading type="spinner" color="#fcc900" size="45px" v-if="isLoading"/>
-     <div class="favorites-content" :class="{'margin_b':showDelFlag}" v-else>
+     <div class="favorites-content" v-else>
         <div v-if="likeList.length">
           <van-row gutter="6">
             <van-col span="12" v-for="(item,index) in likeList" :key="index">
@@ -33,7 +33,7 @@
                     </div>
                   </div>
                   <div class="bot_box d_flex_between d_flex">
-                    <strong class="p_price color_warning">R{{item.price/100.0}}</strong>
+                    <strong class="price-normal color_warning">R{{item.price/100.0}}</strong>
                     <div class="d_flex" v-if="item.platformstarlevel>0">
                       <van-icon name="star" size="14" color="#fcc900" class="start_tag"/>
                       {{item.platformstarlevel/10}}</div>
@@ -56,7 +56,7 @@
      </div>
    </scroll-view>
 <!--   定位-->
-   <div class="btn_pos_area" v-if="showDelFlag && likeList.length">
+   <div class="btn_pos_area" v-if="showDelFlag">
       <div class="pos_left">
         <van-checkbox v-model="allChecked" label-disabled>Select all</van-checkbox>
       </div>
@@ -311,7 +311,7 @@ import CommonDialog from '@/components/common/CommonDialog'
     background:#eee;
   }
   .favoriteScroll{
-    height:calc(100vh - 46px);
+    height:calc(100vh - 46PX);
     background-color: #eee;
   }
   .editScroll{
@@ -321,7 +321,7 @@ import CommonDialog from '@/components/common/CommonDialog'
 .favorites-content{
   background-color: #EEEEED;
   border-radius: 6px;
-
+  padding-bottom: 46px;
 }
 .margin_b{
   padding-bottom: 46px;

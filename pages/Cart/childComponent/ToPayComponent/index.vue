@@ -910,7 +910,7 @@
 
   }
   .scrollViewHeight {
-    height: calc(100vh - 46px - 100px);
+    height: calc(100vh - 46PX - 100PX);
     padding-bottom:50px;
     background-color: #EEEEED;
   }
@@ -928,7 +928,7 @@
   .toPay-btn{
     border-top:1px solid #EEEEED;
     position:fixed;
-    bottom:50px;
+    bottom:46PX;
     left:0;
     height:50px;
     line-height:50px;

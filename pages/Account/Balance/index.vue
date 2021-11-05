@@ -215,7 +215,7 @@ import { timeFormatValidate  } from '@/utils'
     font-size:15px;
   }
   .billScrollHeight{
-    height:calc(100vh - 50px - 46px);
+    height:calc(100vh - 50PX - 46PX);
     background-color: #EEE;
     /deep/ .van-loading{
       margin:80px auto ;

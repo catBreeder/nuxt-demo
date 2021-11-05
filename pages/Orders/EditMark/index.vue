@@ -218,7 +218,6 @@
         this.user.cellphone = cellphone;
         this.user.name = name;
         this.mobile =countrycode? `${countrycode}`:'27';
-        console.log(this.shopOrderId )
       }
 
     }

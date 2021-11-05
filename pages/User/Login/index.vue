@@ -172,10 +172,10 @@
               setCustomerIdentity(res.data.customeridentity)
             }
             setUserType(res.data.usertype)
-            this.$sensors.login(res.data.id)
-            JsCookie.remove('origUrl')
-            //将数据保存到localStorage中
+            if(process.client){
+              this.$sensors.login(res.data.id);
 
+            }
             setSensorData({
               platform_type: 'WAP',
               is_member: res.data.vip>0,
@@ -183,6 +183,10 @@
               vip_level:res.data.vip || '',
               sales: res.data.businessname || '',
             })
+            JsCookie.remove('origUrl')
+            //将数据保存到localStorage中
+
+
 
             //神策事件埋点
             /*

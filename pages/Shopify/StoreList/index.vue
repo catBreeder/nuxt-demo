@@ -66,10 +66,7 @@
       },
       methods:{
         createStoreHandle(){
-          if(process.browser){
-            window.open('https://apps.shopify.com/shopshipshake')
-          }
-
+          window.open('https://apps.shopify.com/shopshipshake')
         },
           getStoreListHandle(){
             this.isLoading = true;
@@ -114,7 +111,7 @@
 
 <style scoped lang="less">
   .shopifyScrollView{
-    height:calc(100vh - 85px);
+    height:calc(100vh - 85PX);
     background-color: #fff;
   }
   .store-list-content,.create-content{

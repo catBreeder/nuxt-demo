@@ -1,6 +1,7 @@
-
+const {internalIpV4Sync} = require('internal-ip')
 const env = require('./env')
 export default {
+  mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'shopshipshake',
@@ -15,6 +16,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'ShopShipShake.com offers you the largest online 1688.com shopping option in China, the fastest we can do is 3 days to JNB (Door to Door) with reasonable cost purchasing more than 1 billion different products directly from the Chinese factory. ' },
       { hid: 'keywords', name: 'keywords', content: '1688, alibaba cn, 1688 english, chinese alibaba, 1688 agent, 1688 buying agent, buy from 1688, 1688 wholesale, 1688 delivery' },
+      { hid: 'og:keywords', name: 'og:keywords', content: '1688, alibaba cn, 1688 english, chinese alibaba, 1688 agent, 1688 buying agent, buy from 1688, 1688 wholesale, 1688 delivery' },
       { name: 'format-detection', content: 'telephone=no' },
       {hid:'og:title',property:'og:title',content:'ShopShipShake'},
       {hid:'og:type',property:'og:type',content:'website'},
@@ -24,16 +26,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {rel:'stylesheet',href:'//at.alicdn.com/t/font_2383374_z8yunxp635.css'}
+      {rel:'stylesheet',href:'//at.alicdn.com/t/font_2383374_qq2slo5rq2.css'}
     ]
   },
   env:{
-    baseUrl:env[process.env.NODE_ENV].ENV_API,
-    // baseUrl:'http://192.168.0.46:38080',
-
+    // envVariable: envVariable,
+    baseUrl:env[process.env.NODE_ENV].ENV_API
   },
   server:{
-    port:env[process.env.NODE_ENV].ENV_PORT
+    host:internalIpV4Sync(),    port: 3000
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -76,7 +77,7 @@ export default {
           name:'clearanceProduct',
           component:resolve(__dirname,'pages/Home/DetainProduct/List/index.vue'),
           meta:{
-            hideTabbar: true
+            hideTabbar:true
           }
         },
         //滞留商品详情
@@ -468,6 +469,39 @@ export default {
         },
 //------------order 结束--------------------
 //------account 开始------------------
+//
+        {
+          path:'/customertask/promotiontool',
+          name:'customerPromotionTool',
+          component:resolve(__dirname,'pages/Account/Influence/PromotionTool'),
+          meta:{
+            analyTitle: 'Promotion',
+          }
+        },
+        {
+          path:'/customertask/awards',
+          name:'customerTaskAwards',
+          component:resolve(__dirname,'pages/Account/Influence/AwardHistory'),
+          meta:{
+            analyTitle: 'Promotion',
+          }
+        },
+        {
+          path:'/customertask/promotiondetail',
+          name:'customerTaskPromotionDetail',
+          component:resolve(__dirname,'pages/Account/Influence/PromotionReward'),
+          meta:{
+            analyTitle:'Influence',
+          }
+        },
+        {
+          path:'/customertask/promotioninfo',
+          name:'customerTaskPromotionInfo',
+          component:resolve(__dirname,'pages/Account/Influence/PromotionInfo'),
+          meta:{
+            analyTitle:'Influence',
+          }
+        },
         {
           path: '/account/index',
           name:'AccountIndex',
@@ -748,7 +782,8 @@ export default {
           component:resolve(__dirname,'pages/Account/Favorites/index.vue'),
           meta: {
             analyTitle:'收藏',
-            content:'Favorites'
+            content:'Favorites',
+            hideTabbar:true
           }
         },
         {
@@ -875,13 +910,13 @@ export default {
     '@/plugins/clipBoard.js',
     {src:'@/plugins/router.js',ssr:false},
     {src:'@/plugins/intro.js',ssr:false},
-    {src: '@/plugins/sensor.js',ssr:false},
+    {src: '@/plugins/sensor.js',ssr:true},
     {src: '@/plugins/vueCropper.js',ssr:false},
     { src: '@/plugins/localStorage.js', ssr: false },
     {src: '@/plugins/main', ssr: true},
     {src:'@/plugins/exposure.js',ssr:false},
     {src:'@/plugins/swiper.js',ssr:false},
-    {src:'@/plugins/drag.js',ssr:false},
+    {src:'@/plugins/drag.js',ssr:true},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -895,10 +930,24 @@ export default {
   modules: [
     '@nuxtjs/axios'
   ],
-
+  axios:{
+    //开启代理
+    proxy: true,
+    //最多重发三次
+    retry: { retries: 3 },
+    //是否是可信任
+    withCredentials: true
+  },
+  proxy:{
+    '/api':{
+      target:env[process.env.NODE_ENV].ENV_API,
+      changeOrigin:true,
+    }
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: { allChunks: true },
+    vendor: ["axios"],
     // optimization:{
     //   splitChunks:true
     // },

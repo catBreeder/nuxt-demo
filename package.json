@@ -6,22 +6,25 @@
     "dev:jianwei": "cross-env NODE_ENV=jianweidev nuxt",
     "dev:zhouzhen": "cross-env NODE_ENV=zhouzhendev nuxt",
     "dev:xueyan": "cross-env NODE_ENV=xueyandev nuxt",
+    "dev:pre": "cross-env NODE_ENV=predev nuxt",
     "build:zhouzhen": "cross-env NODE_ENV=zhouzhenprod nuxt build",
     "build:jianwei": " cross-env NODE_ENV=jianweiprod nuxt build",
     "build:prod": " cross-env NODE_ENV=prod nuxt build",
     "build:pre": " cross-env NODE_ENV=pre nuxt build",
     "build:xueyan": "cross-env NODE_ENV=xueyanprod nuxt build",
-    "start": "cross-env NODE_ENV=prod nuxt start",
+    "build:test": "cross-env NODE_ENV=testprod nuxt build",
+    "start:prod": "cross-env NODE_ENV=prod nuxt start",
     "start:zhouzhen": "cross-env NODE_ENV=zhouzhenprod nuxt start",
     "start:jianwei": "cross-env NODE_ENV=jianweiprod nuxt start",
     "start:pre": "cross-env NODE_ENV=pre nuxt start",
-    "start:xueyan": "cross-env NODE_ENV=xueyanprod nuxt start"
-
+    "start:xueyan": "cross-env NODE_ENV=xueyanprod nuxt start",
+    "start:test": "cross-env NODE_ENV=testprod nuxt start"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "axios": "^0.23.0",
     "core-js": "^3.15.1",
+    "internal-ip": "^7.0.0",
     "intersection-observer": "^0.12.0",
     "js-cookie": "^3.0.1",
     "less": "^4.1.2",

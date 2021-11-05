@@ -418,7 +418,7 @@ export default {
   }
 
 .scroll_fixed{
-  height:calc(100vh - 100px - 46px);
+  height:calc(100vh - 100PX - 44PX);
   background-color: #EEEEED;
 }
 .show-owner-container{

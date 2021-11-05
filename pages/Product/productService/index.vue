@@ -121,10 +121,8 @@
         this.showPicker = false;
       },
       removeBoxOperateHandle(type){
-        console.log(type);
         switch (type) {
           case "cancel":
-            console.log('116')
             this.$router.back()
             break;
           case 'create':
@@ -142,10 +140,6 @@
                 return;
               }
             }
-            // this.$emit('createEmit',{
-            //   serviceValue:this.radio,
-            //   receiver:this.receiverValue
-            // });
             this.$EventBus.$emit('confirmEvent',{
               serviceValue:this.radio,
               receiver:this.receiverValue

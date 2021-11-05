@@ -282,7 +282,7 @@ import {objectTranToArrayString} from "@/utils";
       border-color: #fcc900;
     }
     .afterSaleScroll{
-      height:calc(100vh - 50px - 46px);
+      height:calc(100vh - 50PX - 46PX);
       background-color: #eeeeee;
     }
   .share-after-content{

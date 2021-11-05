@@ -8,7 +8,7 @@
         <template #title>Clearance</template>
       </van-nav-bar>
     </van-sticky>
-    <scroll-view class="scrollCommonHeightView" style="background-color: #fff;"  @reachBottom="loadMoreHandle">
+    <scroll-view class="scrollHeightNoBar" style="background-color: #fff;"  @reachBottom="loadMoreHandle">
       <van-loading type="spinner" color="#fcc900" size="45px" v-if="isLoading"/>
       <div class="detain-list-content" v-else>
         <van-notice-bar

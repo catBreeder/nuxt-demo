@@ -34,17 +34,19 @@ service.interceptors.response.use(response=>{
     return response.data;
   }
 },err=>{
-  if(err.response.status===401){
-    let ajaxdata = err.response.data;
-    if(ajaxdata.code=='3000012'){
-      window.location.href=ajaxdata.redirect;
-
+  if(err){
+    if(err.response && err.response.status==401){
+      let ajaxdata = err.response.data;
+      if(ajaxdata.code=='3000012'){
+        window.location.href=ajaxdata.redirect;
+      }else{
+        return Promise.reject(err)
+      }
     }else{
       return Promise.reject(err)
     }
-  }else{
-    return Promise.reject(err)
   }
+
 
 })
 export const post =(url,object)=>{
@@ -69,6 +71,7 @@ export const get =(url,option)=> {
     || url.indexOf('/api/supplier/removefavorite')!==-1
     || url.indexOf('/api/product/productlimit')!==-1
     || url.indexOf('/api/customertask/promotion')!==-1
+    || url.indexOf('/api/customertask/getBillList')!==-1
   ){
     //如果是pop，就返回res
     let originUrl = ticket?`${url}?ticket=${ticket || ''}`:`${url}`

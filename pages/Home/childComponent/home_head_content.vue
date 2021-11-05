@@ -166,7 +166,10 @@ export default {
               //   vip_level:getLoginInfo().vip || '',
               //   sales:getLoginInfo().businessname || ''
               // })
-              this.$sensors.track('click_watsapp');//神策事件
+              if(process.client){
+                this.$sensors.track('click_watsapp');//神策事件
+              }
+
               if(this.isLogin){
                 this.contactTel = `${getLoginInfo().ambassadorcountrycode?getLoginInfo().ambassadorcountrycode:''}${getLoginInfo().ambassadorcellphone}`
               }

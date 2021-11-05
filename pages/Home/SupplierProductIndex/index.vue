@@ -560,7 +560,7 @@
     }
   }
   .rankSupplierScroll{
-    height:calc(100vh - 142px - 46PX);
+    height:calc(100vh - 142PX - 46PX);
     background-color: #EEEEED;
   }
   /deep/.van-share-sheet__cancel{

@@ -479,7 +479,7 @@
   }
   .comment-model-wrapper{
     .commentScrollHeight{
-      height:calc(100vh - 100px - 46px );
+      height:calc(100vh - 100PX - 46PX );
       background-color: #EEEEED;
     }
   }

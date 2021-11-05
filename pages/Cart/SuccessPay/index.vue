@@ -48,7 +48,7 @@ export default {
     border-bottom:none;
   }
     .success-pay-wrapper{
-        height:calc(100vh - 50px);
+        height:calc(100vh - 50PX);
         background-color: #fff;
         color:#3d4145;
         text-align: center;

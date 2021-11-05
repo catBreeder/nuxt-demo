@@ -64,7 +64,7 @@
               <div class="error_tag g_mt_m" v-if="nameError.visible">{{nameError.content}}</div>
             </div>
             <div class="form-input-item" @click.stop="showPopupHandle('country')">
-              <div class="form-input-item-label">Country<span class="color_warning">*</span>:</div>
+              <div class="form-input-item-label">Delivery Country<span class="color_warning">*</span>:</div>
               <input type="text" class="input-normal w_90" placeholder="Country" v-model="personForm.countryName"   readonly>
               <van-icon :name="isVisible && visibleType=='country'?'arrow-down':'arrow'" color="gray"  size="18"
                         class="from-input-arrow" />
@@ -280,7 +280,10 @@
             setUserID(res.data.id)
             setUserType(res.data.usertype);
             setCustomerIdentity(res.data.setCustomerIdentity)
-            this.$sensors.login(res.data.id)
+            if(process.client){
+              this.$sensors.login(res.data.id)
+            }
+
             //将数据保存到localStorage中
             setSensorData({
               platform_type: 'WAP',
@@ -289,7 +292,6 @@
               vip_level:res.data.vip || '',
               sales: res.data.businessname || '',
             })
-
             //神策事件埋点
             /*
             * let option ={}

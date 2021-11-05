@@ -808,7 +808,7 @@ import {accountBasicInfoApi} from '@/api/account'
   }
   .orderShipScroll{
     position: relative;
-    height:calc(100vh - 46px);
+    height:calc(100vh - 46PX);
     background-color: #EEEEED;
   }
   .remove_content{

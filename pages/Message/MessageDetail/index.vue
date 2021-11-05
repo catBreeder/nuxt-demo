@@ -70,7 +70,7 @@
 </style>
 <style scoped lang="less">
   .scrollHeight{
-    height:calc(100% - 49px)
+    height:calc(100% - 49PX)
   }
   .navbar-title{
     font-size:18px;

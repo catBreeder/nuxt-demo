@@ -19,7 +19,6 @@ NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 export default ({app})=>{
     app.router.beforeEach((to,from,next)=>{
         NProgress.start();
-        document.title = `${to.meta.content?to.meta.content:''}${to.meta.content?'-':''}shopshipshake`;
       if(to.path=='/login' || to.path=='/register'){
         logoutApi().then(res=>{})
         removeLoginInfo();
@@ -38,27 +37,30 @@ export default ({app})=>{
         localStorage.removeItem('top100Info')
         localStorage.removeItem('HomeProductModal')
         localStorage.removeItem('changeTab');
-
       }
         next()
     })
     app.router.afterEach((to,from)=>{
         NProgress.done();
-      sensors.registerPage({
-        is_member:()=>{
-          return !getLoginInfo()?false:getLoginInfo().vip>0
-        },
-        is_login:()=>{
-          return !!getUserID();
-        },
-        vip_level:()=>{
-          return !getLoginInfo()?'':getLoginInfo().vip;
-        },
-        sales:()=>{
-          return  !getLoginInfo()?'':getLoginInfo().businessname
+
+        if(process.client){
+          sensors.registerPage({
+            is_member:()=>{
+              return !getLoginInfo()?false:getLoginInfo().vip>0
+            },
+            is_login:()=>{
+              return !!getUserID();
+            },
+            vip_level:()=>{
+              return !getLoginInfo()?'':getLoginInfo().vip;
+            },
+            sales:()=>{
+              return  !getLoginInfo()?'':getLoginInfo().businessname
+            }
+          })
+          sensors.track("pageview",{title:to.meta.analyTitle?to.meta.analyTitle:'未知'});
+          sensors.quick('autoTrack')
         }
-      })
-      sensors.track("pageview",{title:to.meta.analyTitle?to.meta.analyTitle:'未知'});
-      sensors.quick('autoTrack')
+
     })
 }

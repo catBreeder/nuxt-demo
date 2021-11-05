@@ -42,7 +42,7 @@ export default {
 
 <style scoped lang="less">
 .scrollViewHeight{
-  height:calc(100vh - 46px);
+  height:calc(100vh - 46PX);
   .s3-sample-box{
     padding:20px 0;
     font-size:0;

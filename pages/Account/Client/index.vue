@@ -143,6 +143,7 @@ import CommonDialog from '@/components/common/CommonDialog'
       hideVisibleHandle(){
           this.isVisible = false;
           if(this.dialogType=='success'){
+            this.page =1;
             this.getAddressList()
           }
       },

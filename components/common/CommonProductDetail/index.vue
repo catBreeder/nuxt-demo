@@ -195,7 +195,7 @@
         padding: 4PX 6PX;
         width: 93%;
         height: 44PX;
-        line-height:1.5;
+        line-height:1.6;
         font-size: 14px;
         color: #333;
         overflow: hidden;

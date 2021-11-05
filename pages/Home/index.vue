@@ -144,7 +144,19 @@
   export default {
     head(){
       return{
-        title:'Home - shopshipshake'
+        title:'ShopShipShake Build Your Business - shopshipshake',
+        meta:[
+          {
+            hid:'description',
+            name:'description',
+            content:'ShopShipShake offer you the largest online shopping options. You can purchase more than 1 billion different products directly from factories in China'
+          },
+          {
+            hid:'keywords',
+            name:'keywords',
+            content:'Shopshipshake, Shopshipshake.com, China Supplies, South Africa Wholesale, 1688 Agent, Dropshipping, China to South Africa Shipping,  Deliver South Africa, Reviews, Online Shopping,Shopping Agent, Purchase Products From China, Purchasing Agency, Logistics Transport,Transport Warehouses, Electronics, Cell Phones, Toys, Apparel, Accessories, Shoes, Jewelry, Watches, Office Products, Sports & Outdoors, Sporting Goods, Baby Products, Beauty, Home, Bed & Bath, Furniture, Tools, Hardware, Outdoor Living'
+          }
+        ]
       }
     },
     name: "index",
@@ -239,9 +251,9 @@
           showStepNumbers: false,
           showProgress:false,
           showBullets:false,
-          nextLabel:"<div >Next</div>", //下一步骤按钮的文字
-          doneLabel:"<div>Done</div>", //下一步骤按钮的文字
-          prevLabel:"<div>Back</div>", //下一步骤按钮的文字
+          nextLabel:"<div style='margin: -9px -15px'>Next</div>", //下一步骤按钮的文字
+          doneLabel:"<div style='margin: -9px -15px'>Done</div>", //下一步骤按钮的文字
+          prevLabel:"<div style='margin: -9px -15px'>Back</div>", //下一步骤按钮的文字
           steps: [
             {
               intro:'<p >Hello!</p>' +
@@ -598,9 +610,6 @@
 
 </style>
 <style scoped lang="less">
-  /deep/.introjs-button{
-    padding:10px 15px;
-  }
   .wrapper {
     display: flex;
     align-items: center;
@@ -686,7 +695,7 @@
   }
   .scroll-container{
     width: 100%;
-    height:calc(100vh - 46px);
+    height:calc(100vh - 46PX);
     overflow-x:hidden;
     overflow-y:scroll
   }

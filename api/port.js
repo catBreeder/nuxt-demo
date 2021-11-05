@@ -227,6 +227,10 @@ export default  {
   'account_feeback_search':`/api/questionFeedback/searchlist`,//用户反馈搜索
   'account_feedback_operate':`/api/questionFeedback/operation`,//用户反馈搜索
   'account_feedback_plus':`/api/questionFeedback/plususeful`,//用户反馈搜索
+  /*推广任务*/
+  'account_customer_task_reward':'/api/customertask/promotiondetail',
+  'account_customer_bill_list':'/api/customertask/getBillList',
+  'account_customer_award_list':'/api/customertask/getawardsList',
 
   /*会员　开始*/
   'account_vip_info':`/api/membership/index`,//会员权益信息

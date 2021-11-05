@@ -242,10 +242,8 @@
         this.$refs.cropper.getCropBlob((data) => {
           //这个data就是我们截取后的blob图片
           var name= this.imgKey;
-          let file ='';
-          if(process.client){
-            file = new window.File([data], name, {type: data.type})
-          }
+          let file  = new window.File([data], name, {type: data.type})
+
           let formData = new FormData();
           formData.append('file',file);
           formData.append('ticket',getUserTicket());

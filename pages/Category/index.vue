@@ -223,7 +223,7 @@
     position: relative;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: calc(100vh - 50px - 46px);
+    height: calc(100vh - 50PX - 46PX);
     /deep/.van-empty{
       padding:0;
       position: absolute;
@@ -235,7 +235,7 @@
   .category_item{
     font-size: 12px;
     border: 0px solid black;
-    min-height: calc((100vh - 88px)/12);
+    min-height: calc((100vh - 88PX)/12);
     overflow: hidden;
     border-bottom: 1px solid #fff;
     padding: 0px 8px;
@@ -267,6 +267,6 @@
     height:50px;
   }
   .scrollHeight{
-    height:calc(100vh - 50px - 60px)
+    height:calc(100vh - 50PX - 60PX)
   }
 </style>

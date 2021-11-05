@@ -304,7 +304,7 @@
 
 <style scoped lang="less">
   .shopifyScrollView{
-    height:calc(100vh - 85px);
+    height:calc(100vh - 85PX);
     background-color: #EEEEED;
   }
   .list_bottom{

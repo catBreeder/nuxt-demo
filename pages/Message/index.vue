@@ -118,17 +118,15 @@ export default {
     },
 
     getUnReadCount(){
-      if(getUserTicket()){
-        unReadMessageApi().then(res=>{
-          this.tabList=[
-            {title:'All',count:res['count']},
-            {title:'Unread',count:res['count2']},
-            {title:'Order',count:res['count3']},
-            {title:'Membership',count:res['count4']},
-            {title:'Website',count:res['count5']},
-          ];
-        })
-      }
+      unReadMessageApi().then(res=>{
+        this.tabList=[
+          {title:'All',count:res['count']},
+          {title:'Unread',count:res['count2']},
+          {title:'Order',count:res['count3']},
+          {title:'Membership',count:res['count4']},
+          {title:'Website',count:res['count5']},
+        ];
+      })
 
     },
     goBackHandle(){
@@ -148,31 +146,29 @@ export default {
       this.getUnReadCount()
     },
     getMessageList(){
-      if(getUserTicket()){
-        this.isLoading = true;
-        messageRecordApi({
-          page:this.page,
-          tab:this.tabIndex+1,
-          lastmintime:this.lastmintime
-        }).then(res=>{
-          this.lastmintime = res.lastmintime_page || 0;
-          this.messageList =res.datas;
-          this.totalPage = res.pageCount_page;//总页数
-          if(this.messageList.length < 8 && res.pageCount_page>1){
-            this.page ++;
-            messageRecordApi({page:this.page,tab:this.tabIndex+1,lastmintime:this.lastmintime}).then(resp=>{
-              this.lastmintime = resp.lastmintime_page || 0;
-              this.messageList = [...this.messageList,...resp.datas]
-            })
-          }
+      this.isLoading = true;
+      messageRecordApi({
+        page:this.page,
+        tab:this.tabIndex+1,
+        lastmintime:this.lastmintime
+      }).then(res=>{
+        this.lastmintime = res.lastmintime_page || 0;
+        this.messageList =res.datas;
+        this.totalPage = res.pageCount_page;//总页数
+        if(this.messageList.length < 8 && res.pageCount_page>1){
+          this.page ++;
+          messageRecordApi({page:this.page,tab:this.tabIndex+1,lastmintime:this.lastmintime}).then(resp=>{
+            this.lastmintime = resp.lastmintime_page || 0;
+            this.messageList = [...this.messageList,...resp.datas]
+          })
+        }
 
-        }).catch((err)=>{
+      }).catch((err)=>{
 
-        })
-        setTimeout(()=>{
-          this.isLoading = false;
-        },this.$config.duringWait)
-      }
+      })
+      setTimeout(()=>{
+        this.isLoading = false;
+      },this.$config.duringWait)
 
     },
   },
@@ -198,6 +194,6 @@ export default {
 
 }
 .scrollViewHeight{
-  height:calc(100vh - 80px - 50px);
+  height:calc(100vh - 80PX - 50PX);
 }
 </style>

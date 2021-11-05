@@ -91,4 +91,9 @@ export const accountGroupShipBindResultApi =(inc)=>{return post(port.account_gro
 export const accountCustomerTaskPromotionApi =()=>{return get(port.account_customer_task_promotion)}
 //获取customer List
 export const accountCustomerTaskCustomerListApi =(option)=>{return get(port.account_customer_task_promotion_list,option)}
+//推广佣金
+export const accountCustomerTaskRewardApi =()=>{return get(port.account_customer_task_reward)}
+//佣金账单
+export const accountCustomerBillListApi =(startdate	)=>{return get(port.account_customer_bill_list,{startdate	})}
+export const accountCustomerAwardListApi =(page)=>{return get(port.account_customer_award_list,{page})}
 /*推广结束*/

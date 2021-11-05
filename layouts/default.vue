@@ -1,6 +1,6 @@
 <template>
     <div>
-       <nuxt/>
+       <nuxt  keep-alive :keep-alive-props="{ include: includeArr }"/>
        <Footer v-if='!$route.meta.hideTabbar'/>
       <!--消息通知弹出框-->
       <van-popup v-model="isVisible" @click-overlay="closePopHandle"  round :close-on-click-overlay	="true" transition="fade">
@@ -212,6 +212,7 @@ export default {
     },
   data(){
     return{
+      includeArr:['productDetail'],//需要缓存的组件
       isVisible:false,
       popupItem:{},
       popupType:0,
@@ -448,7 +449,6 @@ export default {
       if(!getUserID() && !(this.$route.path=='/shoppingmall/index' ||  this.$route.path=='/')) return;
       //登录检车session标记
       let interrupt_popupwindow_login = window.sessionStorage.getItem('interrupt_popupwindow_login')==1;
-      console.log(interrupt_popupwindow_login);
       if(getUserID() && interrupt_popupwindow_login){
         return;
       }

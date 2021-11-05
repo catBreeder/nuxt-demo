@@ -540,6 +540,7 @@
   import { gTagFun } from '@/utils/buryPoint/gTag'
   import {shareInfoApi ,shareInitApi} from '@/api/home'
   import {getLoginInfo, getRefSpm, setCurrentPage} from "../../utils/memory";
+  import axios from "axios";
   export default {
     head(){
       return {
@@ -578,7 +579,7 @@
         ]
       }
     },
-    name: "index",
+    name: "productDetail",
     components: {ScrollView, EstimatePopup,AddToCartNoticePopup,CommonDialog,CommonProductSwiper,CommonDialogOperate,CommonRemoveProduct},
     data() {
       return {
@@ -651,6 +652,28 @@
       }
     },
     computed: {
+      //获取商品id
+      getProductID(){
+        let productID = '';
+        let {productid,url} = this.$route.query;
+        if(!productid && url){
+          let newValue =["detail.1688.com/offer/", "detail.1688.com/pic/", "m.1688.com/offer/"];
+          let startIndex =0;
+          for(let key in newValue){
+            if(url.indexOf(newValue[key])!=-1){
+              startIndex = url.indexOf(newValue[key])+newValue[key].length;
+              break;
+            }
+          }
+          if(startIndex==0 || url.indexOf('.html')==-1){
+            this.$router.replace('/');
+          }
+          productID =  url.substring(startIndex,url.indexOf('.html'))
+        }else{
+          productID = productid
+        }
+        return productID;
+      },
       //判断是不是shopify商品
       isShopifyProduct(){
         return getLoginInfo() && getLoginInfo().shopifyflg==1  && ((this.shopproduct && this.shopproduct.shopifyflg==1) || (this.productBasicInfo.oneorderflg && this.productBasicInfo.oneorderflg==1))
@@ -950,7 +973,6 @@
           tflag=false;
           if(res.status==200){
             this.isWaiting = false;
-
             if(res.data.status==0){
               var orderids = res.data.data.orderids;
               this.isVisible = true;
@@ -968,11 +990,8 @@
               }).then(res=>{
 
               })
-
               //判断
               if(this.productBasicInfo.badscore != 0 && this.productBasicInfo.badrecord == 0) {
-                // batreviewrecord($("#productid").val(), orderids[0], 1);
-                // this.getReviewInfo(this.productInfo.id,0,2)
                 this.getReviewInfo(this.productInfo.id,orderids[0],1)
               }
             }else{
@@ -992,10 +1011,14 @@
       },
       remindHandle(){
         this.addToCartNoticeVisible = false;
-        this.productPriceVisible = true;
+        setTimeout(()=>{
+          this.productPriceVisible = true;
+        },500)
+
       },
       //添加评价
       remarkHandle(){
+        this.productPriceVisible = false;
         this.$router.push('/shopOrder/edit')
       },
       //弹框的添加购物车
@@ -1050,6 +1073,7 @@
           }else{
             if(this.showRemoveBoxService){
               //  显示去鞋盒弹框
+              this.productPriceVisible = false;
               this.$router.push(`/search/service/${this.productInfo.productID}`)
             }else{
               this.toBuyHandle()
@@ -1258,7 +1282,7 @@
         this.estimateVisible = true;
       },
       getProductDescriptionHandle() {
-        productDescriptionApi(this.productInfo.productID).then(res => {
+        productDescriptionApi(this.$route.query.productid).then(res => {
           if(res){
             this.descriptionHtml = res.replace(/\<img/gi, '<img style="width:100%;height:auto" ');
           }
@@ -1267,9 +1291,9 @@
       },
       getProductDetailHandle() {
         this.isLoading = true;
-        const {categoryid, productid, spm,sf} = this.$route.query;
+        const {categoryid, spm,sf} = this.$route.query;
         productDetailApi({
-          productid,
+          productid:this.getProductID,
           categoryid,
           spm,
           sf: sf?sf:0
@@ -1361,36 +1385,7 @@
           }
         })
       },
-      /*
-      SEO优化
-      optimizePageHandle(product){
-        const {skuinfos,productInfo,seokeywords,content} = product;
-        let metaList = document.getElementsByTagName("meta");
-        let titleValue = content!=null ?seokeywords: skuinfos.productnameen;
-        let productImg = productInfo.images[0];
-        document.title = `${titleValue} - shopshipshake`;
-        for (let i = 0; i < metaList.length; i++) {
-          if (metaList[i].getAttribute("property") == "og:title") {
-            metaList[i].content = `${titleValue} - shopshipshake`;
-          }
-          if (metaList[i].getAttribute("property") == "og:description") {
-            metaList[i].content = titleValue;
-          }
-          if (metaList[i].getAttribute("property") == "og:type") {
-            metaList[i].content = 'product';
-          }
-          if (metaList[i].getAttribute("property") == "og:image") {
-            metaList[i].content = productImg;
-          }
-          if (metaList[i].getAttribute("name") == "keywords") {
-            metaList[i].content = titleValue;
-          }
-          if (metaList[i].getAttribute("name") == "description") {
-            metaList[i].content = titleValue;
-          }
-        }
-      },
-      * */
+
 
     },
     created() {
@@ -1403,6 +1398,7 @@
 
     },
     mounted() {
+
       this.getProductDetailHandle();
       this.getProductDescriptionHandle();
       window.addEventListener('scroll', this.handleScroll, true)
@@ -1436,15 +1432,28 @@
       })
       next();
     },
-    async asyncData({query}){
-      let {productid,categoryid,sf,spm} = query;
-      let res = await  productDetailApi({
-        productid,
-        categoryid,
-        spm,
-        sf: sf?sf:0
-      })
-        let {skuinfos,productInfo,seokeywords,content} = res;
+    async asyncData ({ query }) {
+      let productID = '';
+      let {productid,categoryid,sf,spm,url} = query;
+      if(!productid && url){
+        let newValue =["detail.1688.com/offer/", "detail.1688.com/pic/", "m.1688.com/offer/"];
+        let startIndex =0;
+        for(let key in newValue){
+          if(url.indexOf(newValue[key])!=-1){
+            startIndex = url.indexOf(newValue[key])+newValue[key].length;
+            break;
+          }
+        }
+        if(startIndex==0 || url.indexOf('.html')==-1){
+          this.$router.replace('/');
+        }
+        productID =  url.substring(startIndex,url.indexOf('.html'))
+      }else{
+        productID = productid
+      }
+      const { data } = await axios.get(`${process.env.baseUrl}/api/product/search?ticket=${getUserTicket()}&productid=${productID}&categoryid=${categoryid}&spm=${spm}&sf=${sf?sf:0}`)
+      if(data.status==0){
+        let {skuinfos,productInfo,seokeywords,content} = data.data;
         let titleValue = content!=null ?seokeywords: skuinfos.productnameen;
         let productImg = productInfo.images[0];
         let seoSetting={
@@ -1454,7 +1463,9 @@
         return {
           seoSetting
         }
+      }
     }
+
   }
 </script>
 
@@ -1782,7 +1793,7 @@
   .product-detail-wrapper{
     .scrollGoodDetail{
       position: relative;
-      height:calc(100vh - 49px);
+      height:calc(100vh - 49PX);
       overflow-y: scroll;
       background-color: #EEEEED;
     }

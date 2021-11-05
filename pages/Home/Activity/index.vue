@@ -292,7 +292,10 @@ import { gTagFun } from '@/utils/buryPoint/gTag'
     },
     asyncData({route}){
       let currentPageSeoSetting = seoSetting.find(item=>item.path == route.path);
-      return currentPageSeoSetting
+      if(currentPageSeoSetting){
+        return currentPageSeoSetting
+      }
+
     },
     mounted(){
         this.activityRef = this.$refs.activityRef;

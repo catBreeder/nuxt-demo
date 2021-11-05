@@ -214,7 +214,7 @@
   }
   .member_model_content {
     .scrollViewHeight {
-      height: calc(100vh - 120px - 40px);
+      height: calc(100vh - 120PX - 40PX);
     }
   }
   .group-ship-normal{

@@ -19,8 +19,9 @@ import CategoryModel  from "./childComponents/template/CategoryModel";
 import HomeAllModel from "./childComponents/template/HomeAllModel";
 import KeywordModel from "./childComponents/template/KeywordModel";
 import JsCookie from 'js-cookie'
+import axios from "axios";
 import {keywordOption} from '@/utils'
-import {commonCategorySEOApi,spmLogApi} from '@/api/common';
+import {spmLogApi} from '@/api/common';
 import {setCurrentPage} from '@/utils/memory'
 export default {
   components:{
@@ -30,10 +31,10 @@ export default {
   },
   head(){
     return{
-      title: `${this.seoSetting.title}${this.seoSetting.title?'-':''}shopshipshake`,
+      title: `${this.seoSetting.title?this.seoSetting.title:''}${this.seoSetting.title?'-':''}shopshipshake`,
       meta:[
-        {hid:'description',name:'description',content:`${this.seoSetting.description}`},
-        {hid:'keywords',name:'keywords',content: `${this.seoSetting.keywords}`}
+        {hid:'description',name:'description',content:`${this.seoSetting.description?this.seoSetting.description:''}`},
+        {hid:'keywords',name:'keywords',content: `${this.seoSetting.keywords?this.seoSetting.keywords:''}`}
       ]
     }
   },
@@ -89,12 +90,14 @@ export default {
     next()
 
   },
-  async asyncData({route}){
+   async asyncData({route}){
     /*seo优化*/
-   const res = await commonCategorySEOApi(route.query.thirdid?route.query.thirdid:route.query.categoryID)
-    return{
-      seoSetting:res
-    }
+     let {data} = await axios.get(`${process.env.baseUrl}/api/shoppingmall/querySeoInfoByCategoryid?categoryid=${route.query.thirdid?route.query.thirdid:route.query.categoryID}`)
+     if(data.status==0) {
+       return {
+         seoSetting: data.data
+       }
+     }
   },
 }
 </script>

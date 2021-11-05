@@ -1,3 +1,4 @@
+
 <template>
   <div class="cart-wrapper">
     <van-sticky>
@@ -794,6 +795,7 @@
       },
       //跳转到toPay页面
       changeTabHandle(){
+        console.log('797')
         this.$emit('goToPayEmit')
       },
       //删除选中的商品
@@ -1296,7 +1298,7 @@
     height: 100%;
     .cart-total {
       position: fixed;
-      bottom: 50px;
+      bottom: 46PX;
       left: 0;
       right: 0;
       z-index: 1;
@@ -1461,7 +1463,7 @@
   }
 
   .scrollViewHeight {
-    height: calc(100vh - 46px - 150px);
+    height: calc(100vh - 46PX - 150PX);
     background-color: #EEEEED;
   }
 

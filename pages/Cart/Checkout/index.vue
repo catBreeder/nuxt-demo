@@ -846,7 +846,7 @@ export default {
   }
 }
 .scrollViewHeight{
-  height:calc(100vh - 50px - 90px);
+  height:calc(100vh - 50PX - 90PX);
   background-color: #EEEEED;
 }
 /deep/.van-cell__title{

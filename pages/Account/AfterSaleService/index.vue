@@ -126,7 +126,7 @@ import {accountWorkOrderListApi} from '@/api/account'
     margin:20px auto;
   }
   .afterSaleScroll{
-    height:calc(100vh - 50px - 48px);
+    height:calc(100vh - 50PX - 48PX);
     background-color:#EFEFF4
   }
 .after-sale-wrapper{

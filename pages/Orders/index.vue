@@ -1643,7 +1643,7 @@
 <style scoped lang="less">
   /deep/.van-tab{
     color:#2A2A2A;
-    font-size:15px;
+    font-size:14px;
   }
   /*包裹评价 开始*/
   //图片上传
@@ -1954,11 +1954,11 @@
     }
   }
   .scrollViewHeight{
-    height:calc(100vh - 200px - 40PX);
+    height:calc(100vh - 220PX - 40PX);
     background-color: #eee;
   }
   .scrollShipHeight{
-    height:calc(100vh - 200px - 94PX);
+    height:calc(100vh - 220PX - 94PX);
     background-color: #eee;
   }
   .icon-sousuo{

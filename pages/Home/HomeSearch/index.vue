@@ -191,6 +191,7 @@
             p:'首页',
             spm:`a0001.${this.$route.params.type=='index'?'p0001':'p0003'}.searchurl.0.${getCurrentPageSpmID()}`
           })
+
           window.open(`${this.$config.jianweiDomain}/search?spm=a0001.p0001.searchurl.0.${getCurrentPageSpmID()}&url=${event}`,'online')
 
         }else if(otherUrlValidate(event)){
@@ -529,6 +530,6 @@
     font-size:15px
   }
   .scrollHeight{
-    height:calc(100vh - 50px )
+    height:calc(100vh - 50PX )
   }
 </style>

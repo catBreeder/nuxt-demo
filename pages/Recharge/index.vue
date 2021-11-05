@@ -417,7 +417,7 @@
     font-size:15px;
   }
   .scrollHeight{
-    height:calc(100vh - 50px - 49PX);
+    height:calc(100vh - 50PX - 49PX);
   }
   /deep/.van-dialog__footer{
     display: none;

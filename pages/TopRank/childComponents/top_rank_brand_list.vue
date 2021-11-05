@@ -267,7 +267,7 @@ export default {
   background-size:100% 100%;
 }
 .rankBankScroll{
-  height:calc(100vh - 50px - 48px);
+  height:calc(100vh - 50PX - 48PX);
   background-color: #EEEEED;
 }
 </style>

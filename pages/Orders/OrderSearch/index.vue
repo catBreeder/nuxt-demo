@@ -643,7 +643,7 @@ export default {
     max-width: 100%;
   }
   .scrollContentHeight{
-    height:calc(100vh - 50px - 50px)
+    height:calc(100vh - 50PX - 50PX)
   }
 /deep/.van-icon-search{
   display: none;

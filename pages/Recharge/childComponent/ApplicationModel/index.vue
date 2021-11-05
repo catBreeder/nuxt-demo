@@ -137,7 +137,7 @@ export default {
   line-height:1.8;
 }
 .scrollHeight{
-  height:calc(100vh - 90px - 50px);
+  height:calc(100vh - 90PX - 50PX);
   background-color: #fff;
 }
 /deep/.van-dialog__footer{

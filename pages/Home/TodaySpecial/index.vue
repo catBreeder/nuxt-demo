@@ -289,7 +289,7 @@ import config from '@/config'
     font-size:14px;
   }
 .specialScroll{
-  height:calc(100vh - 50px - 50px);
+  height:calc(100vh - 50PX - 50PX);
   background-color: #EEEEED;
 }
 </style>

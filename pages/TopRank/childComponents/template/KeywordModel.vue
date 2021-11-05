@@ -238,9 +238,7 @@ export default {
     },
     goBannerURL(){
       if(!this.imgInfo.url) return;
-      if(process.browser){
-        window.open(this.imgInfo.url,'online')
-      }
+      window.open(this.imgInfo.url,'online')
 
     },
     changeDespHandle(event){
@@ -269,9 +267,7 @@ export default {
           shareInfoApi(value).then(res=>{
             let url = this.$config.shareURL + res.data.data;
             let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-            if(process.browser){
-              window.open(producturl,'_blank')
-            }
+            window.open(producturl,'_blank')
 
           })
           break;

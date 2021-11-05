@@ -45,7 +45,8 @@
               <van-col span="10"  >
                 <div :class="{
                       'item-whatapp-old':item.isnewmember!=1,
-                      'item-whatapp-new':item.isnewmember==1
+                      'item-whatapp-new':item.isnewmember==1 && item.whatsappstatus==1,
+                      'item-whatapp-fail':item.isnewmember==1 && item.whatsappstatus!=1,
                       }" @click="changeStatusHandle(item)">{{item.cellphone}}</div>
               </van-col>
               <van-col span="7">{{item.ordercount}}</van-col>
@@ -482,13 +483,16 @@
     }
   }
   .managerScroll{
-    height:calc(100vh - 160px);
+    height:calc(100vh - 160PX);
   }
   .item-whatapp-old{
     color:#2A2A2A;
   }
   .item-whatapp-new{
     color:deepskyblue;
+  }
+  .item-whatapp-fail{
+    color:red;
   }
   .bill-list{
     margin-top: 150px;

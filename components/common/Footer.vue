@@ -20,6 +20,7 @@
 <script>
 import homeImg from '@/assets/images/Footer/home.png'
 import { gTagFun } from '@/utils/buryPoint/gTag'
+import {getCurrentPage} from "@/utils/memory";
 
 export default {
   name: "Footer",
@@ -46,6 +47,9 @@ export default {
       ]
     }
   },
+  computed:{
+    currentPage(){return getCurrentPage()}
+  },
   methods: {
     tabChangeHandle(item){
       this.$router.replace(item.path)
@@ -68,6 +72,7 @@ export default {
       },
   },
   mounted() {
+    console.log('footer')
     this.$EventBus.$on('toRecharge',()=>{
      this.tabIndex = 2;
    })
@@ -77,11 +82,15 @@ export default {
     this.$EventBus.$on('toOrder',()=>{
       this.tabIndex = 4;
     })
+    console.log(window.location.pathname);
     if(window.location.pathname.indexOf('/user/recharge')!==-1 ){
       this.tabIndex = 2;
     }
-    if(window.location.pathname.indexOf('/shoporder/2/index')!==-1){
-      this.tabIndex = 4;
+    if(window.location.pathname.indexOf('/user/recharge')!==-1 ){
+      this.tabIndex = 2;
+    }
+    if(window.location.pathname.indexOf('/shoporder/cart')!==-1){
+      this.tabIndex = 3;
     }
     if(window.location.pathname.indexOf('/account/index')!==-1){
       this.tabIndex = 5;
@@ -105,7 +114,6 @@ export default {
   .s3-common-footer-wrapper{
     height:50PX;
     box-sizing: border-box;
-    padding-top: 4PX;
     position: fixed;
     bottom:0;
     left:0;

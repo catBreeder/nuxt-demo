@@ -447,7 +447,7 @@ import {deliveryorderCombineApi ,deliveryorderSaveApi} from '@/api/orders'
 }
 /*  商品信息 end*/
   .combineScroll{
-    height:calc(100vh - 50px - 90px);
+    height:calc(100vh - 50PX - 90PX);
     background-color: #EEEEED;
   }
 </style>

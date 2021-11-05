@@ -242,7 +242,7 @@ import {setOrderShipAddressID} from '@/utils/memory'
   }
 .navbar-right{font-size:18px;}
   .orderAddressScroll{
-    height:calc(100vh - 50px - 49px);
+    height:calc(100vh - 50PX - 49PX);
     background-color:#efeff4 ;
   }
   .order-address-content{

@@ -46,7 +46,7 @@
 
 <style scoped lang="less">
 /deep/.van-tabs__wrap--scrollable .van-tab{
-  font-size:17px;
+  font-size:15px;
   line-height:1.5;
 }
 .color_black{

@@ -3,7 +3,7 @@
   padding:0;
   margin:0;
 }
-html,body{height: 100%;}
+html,body{height: 100%;font-size:14px;}
 html{
   touch-action: none;
 }
@@ -234,6 +234,9 @@ a{
 }
 .introjs-button:focus{
   box-shadow: none;
+}
+.introjs-button{
+  padding:14px 30px;
 }
 .introjs-nextbutton,.introjs-button:focus{
   border-color:orange;

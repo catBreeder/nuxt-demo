@@ -225,7 +225,7 @@
     }
     /*    卡片结束*/
     .membershipScroll{
-      height:calc(100vh - 100px - 120px);
+      height:calc(100vh - 100PX - 120PX);
       background-color: #fff;
     }
     .member-ship-content{

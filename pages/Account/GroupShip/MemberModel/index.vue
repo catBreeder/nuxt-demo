@@ -62,7 +62,7 @@
   }
   .member_wrapper{
     position: relative;
-    height:calc(100vh - 150px)
+    height:calc(100vh - 150PX)
   }
   .intro-other{
     position: absolute;

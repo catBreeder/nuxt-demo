@@ -84,7 +84,7 @@ import ScrollView from "@/components/common/ScrollView";
 <style scoped lang="less">
   .share-wrapper{
     .shareScrollView{
-      height:calc(100vh - 50px - 48px);
+      height:calc(100vh - 50PX - 48PX);
       background-color: #eee;
     }
     /deep/.van-notice-bar{

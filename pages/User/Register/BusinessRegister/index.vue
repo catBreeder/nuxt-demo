@@ -641,7 +641,8 @@
       if(this.$route.query.formType=='update'){
         this.businessForm.name =getUserID()? getLoginInfo().name :'';
         this.businessForm.countrycode = getUserID()?`${getLoginInfo().countrycode}` :'27'
-        this.businessForm.cellphoneConfirm= getUserID()?getLoginInfo().cellphone:''
+        this.businessForm.cellphoneConfirm= getUserID()?getLoginInfo().cellphone:'';
+        JsCookie.remove('inviteCode')
       }
 
     }

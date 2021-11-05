@@ -3,9 +3,10 @@
     <template v-if="cartTab == 0">
       <cart-component @goToPayEmit="goToPayHandle"/>
     </template>
-    <template v-if="cartTab == 1">
+    <template v-else-if="cartTab == 1">
       <toPay-component @goCarEmit="changeToCartHandle" @changeToCartEmit="changeToCartHandle"/>
     </template>
+
   </div>
 </template>
 
@@ -15,7 +16,7 @@ import ToPayComponent from './childComponent/ToPayComponent'
 import config from '@/config'
 import {getCurrentPageSpmID, setRefer, setRefSpm} from '@/utils/memory'
 import {loginRegisterPageBury } from '@/utils/buryPoint/buryPoint';
-import {setCurrentPage} from "../../utils/memory";
+import {setCurrentPage} from "@/utils/memory";
 export default {
   head(){
     return {
@@ -54,15 +55,19 @@ export default {
   },
   methods:{
     goToPayHandle(){
-      this.$router.push('/shoporder/cart?tab=1')
+      this.cartTab=1;
+      this.$router.replace('/shoporder/cart?tab=1')
+      console.log('59')
     },
     changeToCartHandle(){
-      this.$router.push('/shoporder/cart?tab=0')
+      this.cartTab=0;
+      this.$router.replace('/shoporder/cart?tab=0')
+
     },
   },
   mounted() {
     if(this.$route.query.tab){
-      this.cartTab = Number(this.$route.query.tab);
+      this.cartTab =this.$route.query.tab;
     }
   },
 

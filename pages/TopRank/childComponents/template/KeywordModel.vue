@@ -24,7 +24,7 @@
             <van-col span="12" v-for="(item,index) in productList" :key="index">
               <template v-if="index==13 || index==27 || index==41">
 <!--                :style="{height:isLoginOut?'366.88px':'324.33px'}"-->
-                <div class="ads-img" :style="{height:isLoginOut?'377px':'337px'}">
+                <div class="ads-img" :style="{height:isLoginOut?'377px':'337px'}"  style=" margin-bottom: 12px;">
                   <img :src="imgCategory14.image" alt=""  @click="goBannerHandle(imgCategory14,'source')"  v-if="index==13">
                   <img :src="imgCategory28.image" alt=""   @click="goBannerHandle(imgCategory28,'weight')"  v-if="index==27">
                   <img :src="imgCategory41.image" alt=""  @click="goBannerHandle(imgCategory41,'via')" v-if="index==41">
@@ -539,9 +539,9 @@ export default {
 <style scoped lang="less">
   .ads-img{
     overflow:hidden;
-    margin-bottom: 12px;
     img{
       width:100%;
+      height:100%
 
     }
   }

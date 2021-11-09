@@ -1282,7 +1282,7 @@
         this.estimateVisible = true;
       },
       getProductDescriptionHandle() {
-        productDescriptionApi(this.$route.query.productid).then(res => {
+        productDescriptionApi(this.getProductID).then(res => {
           if(res){
             this.descriptionHtml = res.replace(/\<img/gi, '<img style="width:100%;height:auto" ');
           }

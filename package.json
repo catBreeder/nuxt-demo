@@ -7,6 +7,7 @@
     "dev:zhouzhen": "cross-env NODE_ENV=zhouzhendev nuxt",
     "dev:xueyan": "cross-env NODE_ENV=xueyandev nuxt",
     "dev:pre": "cross-env NODE_ENV=predev nuxt",
+    "dev:prod": "cross-env NODE_ENV=predev nuxt",
     "build:zhouzhen": "cross-env NODE_ENV=zhouzhenprod nuxt build",
     "build:jianwei": " cross-env NODE_ENV=jianweiprod nuxt build",
     "build:prod": " cross-env NODE_ENV=prod nuxt build",

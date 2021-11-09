@@ -422,9 +422,9 @@
             this.$router.push("/message/index");
             break;
           case "influence":
-            // url = `${this.$config.jianweiDomain}/customertask/promotion`;
-            // window.location.href = url;
-            this.$router.push('/customertask/promotion')
+            url = `${this.$config.jianweiDomain}/customertask/promotion`;
+            window.location.href = url;
+            // this.$router.push('/customertask/promotion')
             break;
           case "recentView":
             this.$router.push("/recent/view");

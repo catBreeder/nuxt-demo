@@ -61,7 +61,7 @@
              <p v-if="express.transportmode ==2">Fast Air</p>
              <p v-if="express.transportmode ==3">Economical Air - Self Pick-up</p>
              <p v-if="express.transportmode ==10">Ocean Shipping - Door to door</p>
-             <p v-if="express.transportmode ==15">Ocean Shipping - Door to door</p>
+             <p v-if="express.transportmode ==15">Ocean Shipping - Self Pick-up</p>
            </div>
            <div class="track_content_top_title_intro">
              <div v-if="express.transportmode  ==2">Don not support changing delivery way</div>

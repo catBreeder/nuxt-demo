@@ -47,6 +47,18 @@ export default {
       ]
     }
   },
+  props:{
+    currentTabIndex:{type:Number}
+  },
+  watch:{
+    currentTabIndex:{
+      deep:true,
+      immediate:true,
+      handler(newValue){
+        console.log('68--------',newValue);
+      }
+    }
+  },
   computed:{
     currentPage(){return getCurrentPage()}
   },
@@ -72,7 +84,6 @@ export default {
       },
   },
   mounted() {
-    console.log('footer')
     this.$EventBus.$on('toRecharge',()=>{
      this.tabIndex = 2;
    })
@@ -82,19 +93,12 @@ export default {
     this.$EventBus.$on('toOrder',()=>{
       this.tabIndex = 4;
     })
-    console.log(window.location.pathname);
-    if(window.location.pathname.indexOf('/user/recharge')!==-1 ){
-      this.tabIndex = 2;
-    }
-    if(window.location.pathname.indexOf('/user/recharge')!==-1 ){
-      this.tabIndex = 2;
-    }
-    if(window.location.pathname.indexOf('/shoporder/cart')!==-1){
+    this.$EventBus.$on('toCart',()=>{
       this.tabIndex = 3;
-    }
-    if(window.location.pathname.indexOf('/account/index')!==-1){
+    })
+    this.$EventBus.$on('toAccount',()=>{
       this.tabIndex = 5;
-    }
+    })
   }
 
 

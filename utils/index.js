@@ -44,7 +44,10 @@ export const decimalFun =(num)=>{
 }
 //获取网址变量
 export const getQueryVariable =(variable)=>{
-  let query = window.location.search.substring(1);
+  let query ='';
+  if(process.client){
+    query = window.location.search.substring(1);
+  }
   let vars = query.split('&');
   for(let i =0;i<vars.length;i++){
     let pair = vars[i].split('=');
@@ -97,7 +100,10 @@ export const trackTagFun =(option)=>{
   })
 }
 export const getOrigUrlOption=()=>{
-  let url = window.location.search;
+  let url = '';
+  if(process.client){
+    url =window.location.search
+  }
   if (url.indexOf('?') == 1) {return false; }
   if(url.indexOf('origUrl')!=-1){
     let index = url.indexOf('origUrl');
@@ -107,7 +113,6 @@ export const getOrigUrlOption=()=>{
 
 }
 export const getUrlParamsFun =(name,url)=>{
-  console.log(url);
   if (url.indexOf('?') == 1) {return false; }
   url = url.substr(1);
   url = url.split('&');
@@ -138,7 +143,10 @@ export const getUrlParamsFun =(name,url)=>{
 
 //获取网址参数
 export const getUrlParams=(name)=> { // 不传name返回所有值，否则返回对应值
-  var url = window.location.search;
+  var url ='';
+  if(process.client){
+    url = window.location.search;
+  }
   if (url.indexOf('?') == 1) { return false; }
   url = url.substr(1);
   url = url.split('&');
@@ -222,9 +230,9 @@ export const errorFun =(option)=>{
     device:'mobile',
     brower:navigator.userAgent,//浏览器型号
     browerversion:navigator.appVersion,
-    width:document.body.clientWidth,
-    height:document.documentElement.clientHeight,
-    pageurl:window.location.href,
+    width:process.client?document.body.clientWidth:'',
+    height:process.client ? document.documentElement.clientHeight:'',
+    pageurl:process.client?window.location.href:'',
   }
   registerErrorUploadApi({...option,...params}).then(res=>{
 

@@ -29,7 +29,7 @@
           </div>
           <div class="add-btn-area">
             <van-row type="flex" justify="end">
-              <van-col span="10" >
+              <van-col span="14" >
                 <div class="cart-btn">{{btnText}}</div>
               </van-col>
             </van-row>
@@ -58,9 +58,7 @@
         },
         methods:{
           goOtherURLHandle(item,index){
-            this.$emit('goOtherURLEmit',{
-              item,index
-            })
+            this.$emit('goOtherURLEmit',item,index)
           },
         }
     }

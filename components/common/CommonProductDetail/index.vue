@@ -1,5 +1,5 @@
 <template>
-    <div class="common-product-detail-box"  @click="goDetailHandle">
+    <div class="common-product-detail-box" style="margin-bottom:12px;"  @click="goDetailHandle">
       <div class="common-product-detail-inner" >
         <div class="product-item-inner" :style="{height:isLoginOut?'377px':'337px'}">
           <div class="product-img-box">
@@ -137,7 +137,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin-bottom: 12px;
+
   /deep/.van-notice-bar{
     height:40PX;
   }
@@ -196,7 +196,7 @@
         width: 93%;
         height: 44PX;
         line-height:1.6;
-        font-size: 14px;
+        font-size: 14PX;
         color: #333;
         overflow: hidden;
         text-overflow: ellipsis;

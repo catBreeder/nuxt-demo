@@ -1,7 +1,7 @@
 <template>
     <div>
        <nuxt  keep-alive :keep-alive-props="{ include: includeArr }"/>
-       <Footer v-if='!$route.meta.hideTabbar'/>
+       <Footer v-if='!$route.meta.hideTabbar' :currentTabIndex="tabIndex"/>
       <!--消息通知弹出框-->
       <van-popup v-model="isVisible" @click-overlay="closePopHandle"  round :close-on-click-overlay	="true" transition="fade">
         <notice-popup
@@ -222,7 +222,8 @@ export default {
       evaluateVisible:false,//是否显示包裹评价
       orderevaluationVoList:[],//订单列表
       selectOrder:{},//选中上传的商品
-      imageIndex:0
+      imageIndex:0,
+      tabIndex:0
     }
   },
   computed:{
@@ -250,18 +251,26 @@ export default {
       return value;
     }
   },
-  // watch:{
-  //   //监听路由变化
-  //   '$route.path':{
-  //     deep:true,
-  //     immediate:true,
-  //     handler(newVal){
-  //       if(newVal){
-  //         this.getPopupInfo();
-  //       }
-  //     }
-  //   }
-  // },
+  watch:{
+    //监听路由变化
+    '$route.path':{
+      deep:true,
+      immediate:true,
+      handler(newVal){
+        if(newVal =='/shoppingmall/index'){
+          this.$EventBus.$emit('toIndex')
+        }else if(newVal=='/user/recharge'){
+          this.$EventBus.$emit('toRecharge')
+        }else if(newVal =='/shoporder/cart'){
+          this.$EventBus.$emit('toCart')
+        }else if(newVal=='/shoporder/2/index'){
+          this.$EventBus.$emit('toOrder')
+        }else if(newVal =='/account/index'){
+          this.$EventBus.$emit('toAccount')
+        }
+      }
+    }
+  },
   methods:{
     //除了包裹评价关闭消息弹出框
     hidePopup(){
@@ -448,7 +457,7 @@ export default {
       //未登录仅仅在首页弹出
       if(!getUserID() && !(this.$route.path=='/shoppingmall/index' ||  this.$route.path=='/')) return;
       //登录检车session标记
-      let interrupt_popupwindow_login = window.sessionStorage.getItem('interrupt_popupwindow_login')==1;
+      let interrupt_popupwindow_login =sessionStorage.getItem('interrupt_popupwindow_login')==1;
       if(getUserID() && interrupt_popupwindow_login){
         return;
       }

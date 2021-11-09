@@ -24,7 +24,7 @@
           <van-row gutter="6" class="scrollContent" >
             <van-col span="12" v-for="(item,index) in productList" :key="index">
               <template v-if="index==13 || index==27 || index==41">
-                <div class="ads-img" :style="{height:isLoginOut?'377px':'337px'}">
+                <div class="ads-img" :style="{height:isLoginOut?'377px':'337px'}" style=" margin-bottom: 12px;">
                   <img :src="imgCategory14.image"  alt="shopshipshake"   @click="goBannerHandle(imgCategory14,'source')"  v-if="index==13">
                   <img :src="imgCategory28.image"  alt="shopshipshake"   @click="goBannerHandle(imgCategory28,'weight')"  v-if="index==27">
                   <img :src="imgCategory41.image"  alt="shopshipshake"  @click="goBannerHandle(imgCategory41,'via')" v-if="index==41">
@@ -544,9 +544,10 @@ export default {
   .ads-img{
 
     overflow:hidden;
-    margin-bottom: 12px;
+
     img{
       width:100%;
+      height:100%
 
     }
   }
@@ -557,7 +558,7 @@ export default {
     }
   }
 .categoryScroll{
-  height:calc(100vh - 100PX - 46PX);
+  height:calc(100vh - 100PX - 41PX);
   background-color: #EEEEED;
 }
 

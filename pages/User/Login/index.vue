@@ -100,7 +100,6 @@
         title: `Sign in - shopshipshake`
       }
     },
-    name: "index",
     components:{ LoginRegisterLayout},
     data(){
       return{

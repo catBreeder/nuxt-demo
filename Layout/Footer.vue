@@ -74,11 +74,15 @@ export default {
       },
   },
   mounted() {
+    console.log('77----------------')
     this.$EventBus.$on('toRecharge',()=>{
      this.tabIndex = 2;
    })
     this.$EventBus.$on('toIndex',()=>{
       this.tabIndex = 1;
+    })
+    this.$EventBus.$on('toCart',()=>{
+      this.tabIndex = 3;
     })
     this.$EventBus.$on('toOrder',()=>{
       this.tabIndex = 4;
@@ -86,13 +90,19 @@ export default {
     this.$EventBus.$on('toAccount',()=>{
          this.tabIndex = 5;
     })
-    if(window.location.pathname.indexOf('/user/recharge')!==-1 ){
+    if(window.location.pathname=='/shop/shoppingmall/index'){
+      this.tabIndex = 1;
+    }
+    if(window.location.pathname=='/shop/user/recharge'){
       this.tabIndex = 2;
     }
-    if(window.location.pathname.indexOf('/shoporder/2/index')!==-1){
+    if(window.location.pathname=='/shop/shoporder/cart'){
+      this.tabIndex =3;
+    }
+    if(window.location.pathname=='/shop/shoporder/2/index'){
       this.tabIndex = 4;
     }
-    if(window.location.pathname.indexOf('/account/index')!==-1){
+    if(window.location.pathname=='/shop/account/index'){
       this.tabIndex = 5;
     }
   }

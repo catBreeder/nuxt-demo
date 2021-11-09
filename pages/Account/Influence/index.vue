@@ -222,7 +222,7 @@
       },
       facebookOperateHandle(){
         let shareUrl = "http://www.facebook.com/sharer/sharer.php?u=" +this.copyLink;
-        window.open(shareUrl,'online')
+        window.open(shareUrl)
       },
       loadMoreHandle(){
         if(this.page > this.pageCount) {this.status = this.$config.loadingType.FINISHED;return;}

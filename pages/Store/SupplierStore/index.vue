@@ -278,7 +278,7 @@
                 shareInfoApi(value).then(res=>{
                   let url = this.$config.shareURL + res.data.data;
                   let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-                  window.open(producturl,'_blank')
+                  window.open(producturl)
                 })
                 break;
               case 'WhatsApp':
@@ -373,7 +373,7 @@
             this.shareInitHandle(item['platformproductid'])
           },
           goOtherURLHandle(item,index){
-            window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.top100supplierproduct.offerlist.${index}.${getCurrentPageSpmID()}`,'online')
+            window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.top100supplierproduct.offerlist.${index}.${getCurrentPageSpmID()}`)
           },
           getDynamicTitleHandle(){
             getDynamicTitleApi('mobile_module_title').then(res=>{

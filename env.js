@@ -20,8 +20,6 @@ module.exports ={
   predev:{
     NODE_ENV: 'dev',
     ENV_API:'http://pre.shopshipshake.com',
-    LINK_URL:'http://pre.shopshipshake.com',
-    ENV_PORT:'10000'
   },
   proddev:{
     NODE_ENV: 'dev',
@@ -35,9 +33,7 @@ module.exports ={
   /*预发布环境*/
   pre:{
     NODE_ENV: 'prod',
-    LINK_URL:'http://pre.shopshipshake.com',
     ENV_API:'http://pre.shopshipshake.com',
-    ENV_PORT:'10000'
   },
   /*周振打包环境*/
   zhouzhenprod:{

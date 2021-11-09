@@ -165,7 +165,7 @@ export default {
   },
   methods:{
     goMemberUrlHandle(){
-      window.open(`${this.$config.jianweiDomain}/membership/index`,'online')
+      window.open(`${this.$config.jianweiDomain}/membership/index`)
     },
     goDetailHandle(item,index){
       //谷歌埋点
@@ -174,7 +174,7 @@ export default {
         p:'产品列表页面',
         spm:`a0001.category_product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`})
       // this.$router.push(`/search?productid=${item.platformproductid}&spm=a0001.category_product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`)
-      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.category_product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`,'online')
+      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.category_product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`)
     },
     shareProductHandle(item){
       this.shareProductID = item.platformproductid;

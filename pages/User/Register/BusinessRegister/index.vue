@@ -312,7 +312,7 @@
         this.confirmPwdEye = !this.confirmPwdEye;
       },
       checkAgreeHandle(){
-        window.open(this.$config.jianweiDomain + "/helpcenter/index/termsconditions",'online');
+        window.open(this.$config.jianweiDomain + "/helpcenter/index/termsconditions");
       },
       closeHandle(){
         this.$router.replace('/login')

@@ -2,7 +2,6 @@ import axios from 'axios';
 import {stringify} from 'qs';
 import { getUserTicket,setUserTicket } from '@/utils/memory';
 axios.defaults.baseURL =process.env.baseUrl;
-console.log(process.env.baseUrl)
 const service = axios.create({
   headers: {
     "X-Requested-With":"XMLHttpRequest",

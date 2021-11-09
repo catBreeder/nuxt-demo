@@ -891,7 +891,7 @@
             shareInfoApi(value).then(res=>{
               let url = this.$config.shareURL + res.data.data;
               let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-              window.open(producturl,'_blank')
+              window.open(producturl)
             })
             break;
           case 'WhatsApp':

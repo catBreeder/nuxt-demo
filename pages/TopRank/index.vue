@@ -34,7 +34,9 @@ export default {
       title: `${this.seoSetting.title?this.seoSetting.title:''}${this.seoSetting.title?'-':''}shopshipshake`,
       meta:[
         {hid:'description',name:'description',content:`${this.seoSetting.description?this.seoSetting.description:''}`},
-        {hid:'keywords',name:'keywords',content: `${this.seoSetting.keywords?this.seoSetting.keywords:''}`}
+        {hid:'keywords',name:'keywords',content: `${this.seoSetting.keywords?this.seoSetting.keywords:''}`},
+        {hid:'og:keywords',name:'og:keywords',content: `${this.seoSetting.keywords?this.seoSetting.keywords:''}`},
+        {hid:'og:description',name:'og:description',content:`${this.seoSetting.description?this.seoSetting.description:''}`},
       ]
     }
   },

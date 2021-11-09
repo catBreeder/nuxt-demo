@@ -72,7 +72,7 @@
             break;
 
         }
-        window.open(URL,'online')
+        window.open(URL)
 
       }
     },

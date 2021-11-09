@@ -238,7 +238,7 @@ export default {
     },
     goBannerURL(){
       if(!this.imgInfo.url) return;
-      window.open(this.imgInfo.url,'online')
+      window.open(this.imgInfo.url)
 
     },
     changeDespHandle(event){
@@ -267,7 +267,7 @@ export default {
           shareInfoApi(value).then(res=>{
             let url = this.$config.shareURL + res.data.data;
             let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-            window.open(producturl,'_blank')
+            window.open(producturl)
 
           })
           break;
@@ -359,12 +359,12 @@ export default {
         spm:`a0001.p0003.MoreToLove.${index}.${JsCookie.get('currentPageSpmValue')}`
       })
       // this.$router.push(`/search?productid=${item.platformproductid}&spm=a0001.p0003.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`)
-      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.p0003.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`,'online')
+      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.p0003.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`)
 
     },
     goBannerHandle(item,type){
       if(item.url){
-        window.open(item.url,'online')
+        window.open(item.url)
       }else{
         advPageFun(type)
       }
@@ -378,7 +378,7 @@ export default {
         p:'查询结果页面',
         spm:`a0001.p0003.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`
       })
-      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.p0003.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`,'online')
+      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.p0003.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`)
     },
     shareInitHandle(id){
       shareInitApi(id).then(res=>{

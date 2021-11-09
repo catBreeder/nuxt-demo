@@ -111,7 +111,7 @@
     components:{ScrollView,CommonEmpty,CommonDialog},
     methods:{
       goProductDetailHandle(item){
-        window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}`,'online')
+        window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}`)
       },
       confirmDelHandle(){
         let value =this.likeList.filter(item=>item.isChecked).map(item=>item.platformproductid);

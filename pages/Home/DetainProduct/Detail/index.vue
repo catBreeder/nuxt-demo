@@ -4,7 +4,7 @@
         <template #left> <van-icon name="arrow-left" size="26" color="#fff"/></template>
       </van-nav-bar>
       <scroll-view class="detainScrollView">
-        <common-product-swiper  :images="imagesList"/>
+        <common-product-swiper  :images="imagesList" @imgPreviewEmit="isImagePreview = true"/>
         <div class="detain-product-content">
           <div class="product-name van-multi-ellipsis--l2">{{detailInfo.productname}}</div>
           <div class=" d_flex d_flex_between">
@@ -117,6 +117,9 @@
                     @confirmPayEmit="confirmPayHandle"
                     :total="totalMoney/100"/>
       </van-dialog>
+      <van-image-preview v-model="isImagePreview" :images="imagesList" :closeable ="true">
+        <template v-slot:index>{{ index }}</template>
+      </van-image-preview>
     </div>
 </template>
 
@@ -140,7 +143,8 @@
             isVisible:false,
             visibleType:'',
             visibleContent:'',
-            noImage
+            noImage,
+            isImagePreview:false
           }
         },
         computed:{
@@ -169,7 +173,8 @@
            },
           balanceInfo(){
              return {
-               balance:this.detailInfo.balance + this.detailInfo['creditline']
+               balance:(this.detailInfo.balance + this.detailInfo['creditline'])/100,
+               originBalance:this.detailInfo.balance + this.detailInfo['creditline']
              }
           }
         },
@@ -209,7 +214,7 @@
             })
           },
           toPayHandle(){
-            if(this.totalMoney > this.balanceInfo.balance){
+            if(this.totalMoney > this.balanceInfo.originBalance){
               //余额不足
               this.isVisible = true;
               this.visibleType='noPay'
@@ -262,7 +267,7 @@
   /deep/.van-nav-bar__content:after{
     content: "";
     position: absolute;
-    height: 6.5rem;
+    height:40px;
     left: 0;
     right: 0;
     top: 0;
@@ -346,8 +351,8 @@
       .product-img{
         width:65px;
         height:65px;
+        text-align: center;
         img{
-          width: 100%;
           height: 100%;
           border-radius: 6px;
         }

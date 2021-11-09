@@ -910,7 +910,7 @@ export default {
     '@/plugins/clipBoard.js',
     {src:'@/plugins/router.js',ssr:false},
     {src:'@/plugins/intro.js',ssr:false},
-    {src: '@/plugins/sensor.js',ssr:true},
+    {src: '@/plugins/sensor.js',ssr:false},
     {src: '@/plugins/vueCropper.js',ssr:false},
     { src: '@/plugins/localStorage.js', ssr: false },
     {src: '@/plugins/main', ssr: true},

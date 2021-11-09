@@ -60,13 +60,13 @@ export default {
   methods:{
     homePageURL(item){
 
-      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/${item.homeproductid}`,'online');
+      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/${item.homeproductid}`);
     },
     rightTopURL(item){
-      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/${item.topproductid1}`,'online');
+      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/${item.topproductid1}`);
     },
     rightBottomURL(item){
-      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/${item.topproductid2}`,'online');
+      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/${item.topproductid2}`);
     },
     getBrandList(){
       top100SupplierApi({page:this.brandPage,sellerid:this.sellerID}).then(res=>{
@@ -91,7 +91,7 @@ export default {
       })
     },
     goOtherURL(item){
-      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/0`,'online')
+      window.open(`${this.$config.jianweiDomain}/supplier/store/${item.id}/0`)
     },
     goBannerOtherURL(){
       window.location.href="https://shopshipshake.co.za/business-service/launch-of-top100-suppliers-plan/"

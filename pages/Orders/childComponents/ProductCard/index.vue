@@ -74,7 +74,7 @@ export default {
 
       if(this.type =='detail'){
         let url = `${this.$config.jianweiDomain}/search?spm=a0001.detail.buyagain.0.${getCurrentPageSpmID()}&productid=${this.productID}`
-        window.open(url,'online')
+        window.open(url)
       }else if(this.type=='comment'){
         this.$router.push(`/shoporder/2/detail/${this.order.shoporderid}`)
       }else{

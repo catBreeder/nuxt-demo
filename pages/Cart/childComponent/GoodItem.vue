@@ -75,7 +75,7 @@ export default {
            break;
          case 'error':
            URL = `${this.$config.jianweiDomain}/shoporder/2/detail/${ this.product.shoporderid}`
-           window.open(URL,'online')
+           window.open(URL)
            break;
 
       }

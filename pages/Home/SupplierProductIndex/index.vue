@@ -245,7 +245,7 @@
           operate:'click',
           spm:`a0001.top100product.offerlist.${index}.${getCurrentPageSpmID()}`
         })
-        window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.top100product.offerlist.${index}.${getCurrentPageSpmID()}`,'online')
+        window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.top100product.offerlist.${index}.${getCurrentPageSpmID()}`)
       },
       shareProductHandle(item){
         this.shareProductID = item.platformproductid;
@@ -364,7 +364,7 @@
         }
       },
       goMemberUrlHandle(){
-        window.open(`${this.$config.jianweiDomain}/membership/index`,'online')
+        window.open(`${this.$config.jianweiDomain}/membership/index`)
       },
       showFilterHandle(){
         this.isFilter = true;

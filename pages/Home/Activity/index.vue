@@ -103,6 +103,16 @@ import { gTagFun } from '@/utils/buryPoint/gTag'
            hid:'keywords',
            name:'keywords',
            content:this.keywords
+         },
+         {
+           hid:'og:description',
+           name:'og:description',
+           content:this.description
+         },
+         {
+           hid:'og:keywords',
+           name:'og:keywords',
+           content:this.keywords
          }
        ]
      }
@@ -160,7 +170,7 @@ import { gTagFun } from '@/utils/buryPoint/gTag'
           spm:`a0001.${this.$route.params.type}.offerlist.hot_${result.index}.${getCurrentPageSpmID()}`,
           operate:'click'
         })
-        window.open(`${this.$config.jianweiDomain}/search?productid=${result.item.platformproductid}&spm=a0001.${this.$route.params.type}.offerlist.${result.index}.${getCurrentPageSpmID()}`,'online')
+        window.open(`${this.$config.jianweiDomain}/search?productid=${result.item.platformproductid}&spm=a0001.${this.$route.params.type}.offerlist.${result.index}.${getCurrentPageSpmID()}`)
       },
       goOtherURLHandle(result){
         //谷歌埋点
@@ -170,7 +180,7 @@ import { gTagFun } from '@/utils/buryPoint/gTag'
           operate:'click'
         })
 
-        window.open(`${this.$config.jianweiDomain}/search?productid=${result.item.platformproductid}&spm=a0001.${this.$route.params.type}.offerlist.${result.index}.${getCurrentPageSpmID()}`,'online')
+        window.open(`${this.$config.jianweiDomain}/search?productid=${result.item.platformproductid}&spm=a0001.${this.$route.params.type}.offerlist.${result.index}.${getCurrentPageSpmID()}`)
       },
       //图片下载
       downloadHandle(){

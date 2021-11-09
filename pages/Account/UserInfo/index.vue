@@ -187,7 +187,7 @@ import {setCurrentPage} from "../../../utils/memory";
               break;
             case 'facebook':
               let url = `http://www.facebook.com/sharer/sharer.php?u=${this.copyValue}`;
-               window.open(url,'online')
+               window.open(url)
               break;
         }
 

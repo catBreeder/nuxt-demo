@@ -971,7 +971,7 @@
       },
       goAdsHandle(){
         if(!this.imgInfo.url) return;
-        window.open(this.imgInfo.url,'online')
+        window.open(this.imgInfo.url)
       },
       //to ship页面，选中一个，如果这个waybillno有一个选中，其他有waybillno相同的，全部选中，一个取消，全部取消
       chooseItemHandle(item){

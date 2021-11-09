@@ -115,7 +115,7 @@
         this.$router.back()
       },
       goPriorityHandle() {
-        window.open('https://shopshipshake.co.za/business-service/membership', 'online')
+        window.open('https://shopshipshake.co.za/business-service/membership')
       },
       getMemberShipInfo(){
         accountVipInfoApi().then(res=>{

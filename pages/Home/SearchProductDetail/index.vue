@@ -215,7 +215,7 @@
     },
     methods:{
       goSupplierHandle(){
-        window.open('https://shopshipshake.co.za/business-service/launch-of-top100-suppliers-plan/','online')
+        window.open('https://shopshipshake.co.za/business-service/launch-of-top100-suppliers-plan/')
       },
       recommendSelectHandle(value){
         this.recommendFilter = value;
@@ -343,7 +343,7 @@
           resultdata:this.$route.query.picurl,
           p:'', spm:`a0001.p0004.imgofferlist.${index}.${JsCookie.get('imgSearchSpmID')}`})
         //谷歌埋点
-        window.open(`${this.$config.jianweiDomain}/search?productid=${item.id}&spm=a0001.p0004.imgofferlist.${index}.${JsCookie.get('imgSearchSpmID')}`,'online')
+        window.open(`${this.$config.jianweiDomain}/search?productid=${item.id}&spm=a0001.p0004.imgofferlist.${index}.${JsCookie.get('imgSearchSpmID')}`)
       },
       goBack(){
         this.$router.back()

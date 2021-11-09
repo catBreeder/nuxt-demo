@@ -99,7 +99,7 @@ export default {
     goOtherURLHandle(item,index){
       //谷歌埋点
       gTagFun('商城品类名','商品详情','产品列表页面')
-      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.top100product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`,'online')
+      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.top100product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`)
     },
     goBackHandle(){
       this.$router.back()

@@ -230,7 +230,7 @@
         switch (type) {
           case 'activity':
             if(!this.imgInfo.url) return;
-            window.open(this.imgInfo.url,'online')
+            window.open(this.imgInfo.url)
             break;
           case 'detain' :
             //滞留商品页面
@@ -420,7 +420,7 @@
             shareInfoApi(value).then(res=>{
               let url = this.$config.shareURL + res.data.data;
               let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-              window.open(producturl,'_blank')
+              window.open(producturl)
             })
             break;
           case 'WhatsApp':

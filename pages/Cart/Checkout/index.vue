@@ -362,7 +362,7 @@ export default {
     },
     goAdsHandle(){
       if(!this.imgInfo.url) return;
-      window.open(this.imgInfo.url,'online')
+      window.open(this.imgInfo.url)
 
     },
     showListPopHandle(type){

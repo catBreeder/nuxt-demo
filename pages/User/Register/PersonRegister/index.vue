@@ -168,6 +168,7 @@
   import {personRegisterApi,thirdLoginApi} from '@/api/user'
   import {pwdValidate ,removeAllSpace} from '@/utils'
   import {isPureNumberValidate} from '@/utils/validate'
+  import JSCookie from 'js-cookie'
   import {setUserTicket,setLoginInfo,setUserID,setUserType,setSensorData,setCustomerIdentity} from '@/utils/memory'
   export default {
     head(){
@@ -180,7 +181,6 @@
       }
     },
     layout:'loginDefault',
-    name: "index",
     components:{LoginRegisterLayout,ScrollView,CommonDialog,CommonDialogOperate},
     computed:{
       columns(){
@@ -248,7 +248,8 @@
     beforeRouteEnter(to,from,next){
       if(to.query.invitecode || to.query.inc){
         let inviteCode = to.query.invitecode || to.query.inc
-        window.localStorage.setItem('inviteCode',inviteCode)
+        // window.localStorage.setItem('inviteCode',inviteCode)
+        JSCookie.set('inviteCode',inviteCode)
       }
       next()
     },
@@ -274,7 +275,8 @@
         thirdLoginApi(option).then(res=>{
           if(res.status ==0){
             //  保存用户登录信息
-            window.localStorage.removeItem('inviteCode')
+            // window.localStorage.removeItem('inviteCode')
+            JSCookie.remove('inviteCode')
             setUserTicket(res.data.ticket)
             setLoginInfo(res.data);
             setUserID(res.data.id)
@@ -362,7 +364,7 @@
         this.getPostalList()
       },
       threeRegister(){
-        let inc =  window.localStorage.getItem('inviteCode') || ''
+        let inc =  JSCookie.get('inviteCode') || ''
         window.location.href =this.$config.productURL + "/fb/oauth?state=register" + (inc);
       },
       visibleConfirmHandle(event){
@@ -399,7 +401,7 @@
             postcode:this.personForm.postcode,
             suburb:this.personForm.suburb,
             country:this.personForm.countryNameID,
-            inviter: window.localStorage.getItem('inviteCode') || ''
+            inviter: JSCookie.get('inviteCode') || ''
           }).then(res=>{
             if(res.status!=0){
               this.isLoading = false;

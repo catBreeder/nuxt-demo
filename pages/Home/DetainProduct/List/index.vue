@@ -92,7 +92,7 @@
               this.$router.replace(`/login?origUrl=${this.$config.jianweiDomain}/shop${this.$route.fullPath}`)
               return;
             }
-            this.$router.push(`/clearance/detail/${event.item.id}`)
+            this.$router.push(`/clearance/detail/${event.id}`)
           },
         },
       mounted() {

@@ -62,7 +62,7 @@
           });
           // this.$router.push(`/deliveryorder/detail/${item.id}`)
         }
-        window.open(routeData.href, 'online',);
+        window.open(routeData.href);
       },
       hideDialogHandle(){
         this.isVisible = false;

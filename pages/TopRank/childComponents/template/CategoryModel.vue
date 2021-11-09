@@ -198,13 +198,13 @@ export default {
   methods:{
     goBannerHandle(item,type){
       if(item.url){
-        window.open(item.url,'online')
+        window.open(item.url)
       }else{
         advPageFun(type)
       }
     },
     goMemberUrlHandle(){
-      window.open(`${this.$config.jianweiDomain}/membership/index`,'online')
+      window.open(`${this.$config.jianweiDomain}/membership/index`)
     },
     goBottomHandle(){
       if(this.status==this.$config.loadingType.FINISHED) return;
@@ -290,7 +290,7 @@ export default {
           shareInfoApi(value).then(res=>{
             let url = this.$config.shareURL + res.data.data;
             let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-            window.open(producturl,'_blank')
+            window.open(producturl)
           })
           break;
         case 'WhatsApp':
@@ -381,11 +381,11 @@ export default {
       })
 
 
-      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.category_product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`,'online')
+      window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.category_product.offerlist.${index}.${JsCookie.get('currentPageSpmValue')}`)
     },
     goBannerURLHandle(){
       if(!this.imgInfo.url) return;
-      window.open(this.imgInfo.url,'online')
+      window.open(this.imgInfo.url)
 
     },
     doneHandle(value){

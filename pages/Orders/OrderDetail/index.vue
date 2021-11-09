@@ -787,7 +787,7 @@
             break;
           case 'after':
             let afterURL =`${this.$config.jianweiDomain}/shoporder/workorder/${this.shoporder.id}`
-            window.open(afterURL,'online');
+            window.open(afterURL);
             break;
           case 'similar':
             this.isWaiting = true;
@@ -835,7 +835,7 @@
       //1688链接
       goOtherUrlHandle(){
         let url = `https://detail.1688.com/offer/${this.shoporder.alibabaproductid}.html`;
-        window.open(url,'online')
+        window.open(url)
       },
       navbarOperateHandle(type){
         switch (type) {
@@ -922,7 +922,7 @@
             shareInfoApi(value).then(res=>{
               let url = this.$config.shareURL + res.data.data;
               let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-              window.open(producturl,'_blank')
+              window.open(producturl)
             })
             break;
           case 'WhatsApp':

@@ -1,10 +1,10 @@
 <template>
   <div class="s3_header_content">
     <div class="container swiper_container g_mb_l">
-      <van-swipe :autoplay="8000" height="128" indicator-color="#fcc900" >
+      <van-swipe :autoplay="8000"  indicator-color="#fcc900" >
         <van-swipe-item v-for="(item, index) in bannerList" :key="index" >
           <div @click="swiperUrlHandle(item)" class="img-swiper">
-            <img :src="item.imgage"  :alt="item.imgage" />
+            <img :src="item.imgage"  />
           </div>
 
         </van-swipe-item>
@@ -114,13 +114,13 @@ export default {
   },
   methods:{
     swiperUrlHandle(item){
-      window.open(item.hrefurl,'online')
+      window.open(item.hrefurl)
     },
     goOtherURL(e){
       if(!this.isLogin){
         this.$router.replace('/login')
       }else{
-        window.open(`${this.$config.jianweiDomain}${e}`,'online')
+        window.open(`${this.$config.jianweiDomain}${e}`)
       }
     },
     goUserGuidanceHandle(){
@@ -223,8 +223,15 @@ export default {
 </script>
 
 <style scoped lang="less">
+  /deep/.van-swipe-item{
+    height:134px;
+  }
   .img-swiper{
-    height:128px;
+    width:100%;
+    padding-bottom: 100%;
+    img{
+      width:100%;
+    }
   }
 .assistant-content{
   .assistant-title{
@@ -286,6 +293,7 @@ export default {
 
   .home_tab_item{
     font-size:13px;
+    padding:0 4px;
     flex:1;
     text-align: center;
     display: flex;

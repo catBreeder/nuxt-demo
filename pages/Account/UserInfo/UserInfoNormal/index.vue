@@ -55,7 +55,7 @@
       //验证手机号
       verifyHandle(){
         let url = `${this.$config.jianweiDomain}/customertask/todo/verifypage?id=${getUserID()}&verifytype=0&fromtype=0&origUrl=/user/info`;
-        window.open(url,'online')
+        window.open(url)
       }
     },
   }

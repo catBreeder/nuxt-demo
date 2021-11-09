@@ -74,7 +74,6 @@ export default {
       },
   },
   mounted() {
-    console.log('77----------------')
     this.$EventBus.$on('toRecharge',()=>{
      this.tabIndex = 2;
    })

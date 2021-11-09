@@ -1,6 +1,6 @@
 <template>
-  <van-swipe @change="swiperChangeHandle" :loop="false">
-    <van-swipe-item v-for="(item,index) in images" :key="index">
+  <van-swipe @change="swiperChangeHandle" :loop="false" >
+    <van-swipe-item v-for="(item,index) in images" :key="index" @click="showImagePreviewHandle">
       <img :src="item" :alt="imgAlt" :title="imgAlt"/>
       <div class="top_100_img" v-if="isShowTop100"/>
     </van-swipe-item>
@@ -27,14 +27,17 @@
       swiperChangeHandle(index) {
         this.current = index;
       },
+      showImagePreviewHandle(){
+        this.$emit('imgPreviewEmit')
+      }
     }
   }
 </script>
 
 <style scoped lang="less">
-  /deep/.van-swipe{
-    min-height: 360px;
-  }
+  /*/deep/.van-swipe{*/
+  /*  min-height: 360px;*/
+  /*}*/
   .top_100_img{
     width: 40PX;
     height: 40PX;
@@ -59,8 +62,10 @@
     background: rgba(0, 0, 0, 0.3);
   }
   /deep/.van-swipe-item{
+    text-align: center;
+    height: 360px;
     img{
-      width:100%;
+      height:90%;
     }
   }
   /*  轮播图结束*/

@@ -135,7 +135,7 @@
       //   this.$router.push(`/register?spm=a0001.login.register.0.${getCurrentPageSpmID()}`);
       // },
       threeRegister(){
-        window.open(this.$config.productURL+ "/fb/oauth?state=login",'online')
+        window.open(this.$config.productURL+ "/fb/oauth?state=login")
       },
       //跳转到注册
       toRegisterHandle(){
@@ -227,7 +227,7 @@
           operate:'close',
           spm:`a0001.login.close.${getCurrentPageSpmID()}`
         })
-        window.open("https://shop.shopshipshake.com/register/forgotpwd?spm=a0001.login.forget password",'online');
+        window.open("https://shop.shopshipshake.com/register/forgotpwd?spm=a0001.login.forget password");
 
       },
       //  显示密码
@@ -262,9 +262,9 @@
         JsCookie.remove('origUrl')
       }
       if(to.query.origUrl){
-        let origUrl = getOrigUrlOption();
+        // let origUrl = getOrigUrlOption();
         // window.localStorages.setItem('origUrl',origUrl);
-        JsCookie.set('origUrl',origUrl)
+        JsCookie.set('origUrl',to.query.origUrl)
         if(to.query.origUrl.indexOf('shopify')!=-1){
           to.meta.isShopify = true;
         }else{

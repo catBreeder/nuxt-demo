@@ -276,7 +276,7 @@
             shareInfoApi(value).then(res=>{
               let url = this.$config.shareURL + res.data.data;
               let producturl =`http://www.facebook.com/sharer/sharer.php?u=${url}`;
-              window.open(producturl,'_blank')
+              window.open(producturl)
             })
             break;
           case 'WhatsApp':
@@ -373,7 +373,7 @@
       },
       goDetailHandle(item,index){
         gTagFun('商城品类名','商品详情','产品列表页面');
-        window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.${this.$route.params.type}.offerlist.${index}.${getCurrentPageSpmID()}`,'online')
+        window.open(`${this.$config.jianweiDomain}/search?productid=${item.platformproductid}&spm=a0001.${this.$route.params.type}.offerlist.${index}.${getCurrentPageSpmID()}`)
       },
       getSearchList(){
         this.isLoading = true;

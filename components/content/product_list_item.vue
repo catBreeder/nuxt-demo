@@ -102,7 +102,7 @@ export default {
 
   methods:{
     goSupplierHandle(){
-      window.open('https://shopshipshake.co.za/business-service/launch-of-top100-suppliers-plan/','online')
+      window.open('https://shopshipshake.co.za/business-service/launch-of-top100-suppliers-plan/')
     },
     collectHandle(){
       if(getUserTicket()){

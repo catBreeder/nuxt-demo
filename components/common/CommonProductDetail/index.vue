@@ -100,7 +100,7 @@
         },
         methods:{
           goSupplierHandle(){
-            window.open('https://shopshipshake.co.za/business-service/launch-of-top100-suppliers-plan/','online')
+            window.open('https://shopshipshake.co.za/business-service/launch-of-top100-suppliers-plan/')
           },
           shareProductHandle(){
             this.$emit('shareProductEmit',this.item)
@@ -109,7 +109,7 @@
             if(this.$route.path=='/shoppingmall/index'){
               clickPointFun({p:'首页', spm:`a0001.index.${this.category}.${this.index}.${getCurrentPageSpmID()}`});
               let url =`${this.$config.jianweiDomain}/search?productid=${this.item.platformproductid}&categoryid=${this.category}&spm=a0001.index.${this.category}.${this.index}.${getCurrentPageSpmID()}`
-              window.open(url,'online')
+              window.open(url)
             }else{
               this.$emit('goDetailEmit',this.item,this.index)
             }

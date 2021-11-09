@@ -43,5 +43,5 @@ export const advPageFun =(type)=>{
       url=`${config.jianweiDomain}/thematicactivities/categoryproduct/index/16`;
       break;
   }
-  window.open(url,'online')
+  window.open(url)
 }

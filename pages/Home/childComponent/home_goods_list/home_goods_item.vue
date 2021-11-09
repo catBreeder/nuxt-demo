@@ -47,7 +47,7 @@ export default {
     goDetailHandle(){
       clickPointFun({p:'首页', spm:`a0001.index.${this.category}.${this.index}.${getCurrentPageSpmID()}`});
       let url =`${this.$config.jianweiDomain}/search?productid=${this.itemInfo.platformproductid}&categoryid=${this.category}&spm=a0001.index.${this.category}.${this.index}`
-      window.open(url,'online')
+      window.open(url)
     }
 
   },

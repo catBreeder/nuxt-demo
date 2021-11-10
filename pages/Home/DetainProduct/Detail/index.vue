@@ -54,12 +54,12 @@
 
           <template v-if="detailInfo.specialgoods == $config.specialGoodsType.NORMAL">
             <van-notice-bar wrapable :scrollable="false" text="4. The package can be shipped by sea or air."/>
-            <van-notice-bar wrapable :scrollable="false" text="5.Shipping costs are based on the measured volume of the actual packages."/>
+            <van-notice-bar wrapable :scrollable="false" text="The price labeled that is for the whole order, and not sell in separate."/>
 
           </template>
           <template v-else>
             <van-notice-bar wrapable :scrollable="false" text="4. The package can only be shipped by sea (Parcels may contain powdered liquid products )"/>
-            <van-notice-bar wrapable :scrollable="false" text="5.Shipping costs are based on the measured volume of the actual packages."/>
+            <van-notice-bar wrapable :scrollable="false" text="The price labeled that is for the whole order, and not sell in separate."/>
           </template>
         </div>
       </scroll-view>

@@ -1,146 +1,149 @@
 <template>
-  <div>
-    <van-sticky>
-      <navbar-from-keyword
-        :titleProp="getTitle"
-                           @click-left="goBackHandle" />
-      <filter-area
-        :categoryNameList="categoryNameList"
-        @categorySelectEmit="categorySelectHandle"
-        @recommendSelectEmit="recommendSelectHandle"
-        @showFilterEmit="showFilterHandle"
-      />
-    </van-sticky>
-    <scroll-view @reachBottom="goBottomHandle" class="scroll_fixed">
-      <div class="s3_top100_banner " @click="goBannerURL">
-        <img  :src="imgInfo.image" alt="">
-      </div>
-      <template v-if="isLoading">
-        <van-loading type="spinner" color="#fcc900"  size="50px"/>
-      </template>
-      <template v-else>
-        <div v-if="productList.length">
-          <van-row gutter="6"  >
-            <van-col span="12" v-for="(item,index) in productList" :key="index">
-              <template v-if="index==13 || index==27 || index==41">
-<!--                :style="{height:isLoginOut?'366.88px':'324.33px'}"-->
-                <div class="ads-img" :style="{height:isLoginOut?'377px':'337px'}"  style=" margin-bottom: 12px;">
-                  <img :src="imgCategory14.image" alt=""  @click="goBannerHandle(imgCategory14,'source')"  v-if="index==13">
-                  <img :src="imgCategory28.image" alt=""   @click="goBannerHandle(imgCategory28,'weight')"  v-if="index==27">
-                  <img :src="imgCategory41.image" alt=""  @click="goBannerHandle(imgCategory41,'via')" v-if="index==41">
-                </div>
+  <section data-nosnippet>
+    <div>
+      <van-sticky>
+        <navbar-from-keyword
+          :titleProp="getTitle"
+          @click-left="goBackHandle" />
+        <filter-area
+          :categoryNameList="categoryNameList"
+          @categorySelectEmit="categorySelectHandle"
+          @recommendSelectEmit="recommendSelectHandle"
+          @showFilterEmit="showFilterHandle"
+        />
+      </van-sticky>
+      <scroll-view @reachBottom="goBottomHandle" class="scroll_fixed">
+        <div class="s3_top100_banner " @click="goBannerURL">
+          <img  :src="imgInfo.image" alt="">
+        </div>
+        <template v-if="isLoading">
+          <van-loading type="spinner" color="#fcc900"  size="50px"/>
+        </template>
+        <template v-else>
+          <div v-if="productList.length">
+            <van-row gutter="6"  >
+              <van-col span="12" v-for="(item,index) in productList" :key="index">
+                <template v-if="index==13 || index==27 || index==41">
+                  <!--                :style="{height:isLoginOut?'366.88px':'324.33px'}"-->
+                  <div class="ads-img" :style="{height:isLoginOut?'377px':'337px'}"  style=" margin-bottom: 12px;">
+                    <img :src="imgCategory14.image" alt=""  @click="goBannerHandle(imgCategory14,'source')"  v-if="index==13">
+                    <img :src="imgCategory28.image" alt=""   @click="goBannerHandle(imgCategory28,'weight')"  v-if="index==27">
+                    <img :src="imgCategory41.image" alt=""  @click="goBannerHandle(imgCategory41,'via')" v-if="index==41">
+                  </div>
+                </template>
+                <common-product-detail v-else
+                                       :item="item" :index="index"
+                                       @shareProductEmit="shareProductHandle"
+                                       @goDetailEmit="goDetailHandle"
+                                       v-exp-dot
+                                       :data-info='`productid@${item.platformproductid || null }^action@offerlist^totalcount@${pageCount || null }^position@${index}^page@keysearch^query@{"keyword":"${$route.query.keyword}","categoryid":${$route.query.categoryID || null },"thirdid":${$route.query.thirdid || null},"sortby":${recommendFilter || null},"minprice":${minPrice || null},"maxprice":${maxPrice || null}}`'
+                >
+                  <div slot="price" class="d_flex d_flex_between">
+                    <p class="price-normal">
+                      <template v-if="item.price">
+                        {{item.price / 100 | moneyFormat}}
+                      </template>
+                      <template v-else>
+                        {{item.finalprice / 100 | moneyFormat}}
+                      </template>
+                      <del class="discount_price" v-if="item.oprice>0"> R{{item.oprice}}</del>
+                    </p>
+
+                  </div>
+                </common-product-detail>
+              </van-col>
+
+            </van-row>
+            <div class="list_bottom" v-show="productList.length>8">
+              <van-loading size="20px" color="#fcc900" v-if="status==$config.loadingType.LOADING"><span class="font_size_loading">in loading...</span></van-loading>
+              <div class="icon iconfont icon-end color_intro text-align" v-if="status==$config.loadingType.FINISHED"/>
+            </div>
+          </div>
+
+          <section v-if="hasOwnerVisible">
+            <div class="show-owner-container-title">Move To Love</div>
+            <van-row gutter="6" >
+              <van-col span="12" v-for="(item,index) in searchOwnerList" :key="index">
+                <common-product-detail
+                  :item="item" :index="index"
+                  @shareProductEmit="shareProductHandle"
+                  @goDetailEmit="moveGoUrlHandle"
+                  v-exp-dot
+                  :data-info='`productid@${item.platformproductid || null }^action@offerlist^totalcount@${pageCount || null }^position@${index}^page@categorylist^query@{"keyword":"${$route.query.keyword}","categoryid":${$route.query.categoryID || null },"thirdid":${$route.query.thirdid || null},"sortby":${recommendFilter || null},"minprice":${minPrice || null},"maxprice":${maxPrice || null}}`'
+                >
+                  <div slot="price" class="d_flex d_flex_between">
+                    <p class="price-normal">
+                      <template v-if="item.price">
+                        {{item.price / 100 | moneyFormat}}
+                      </template>
+                      <template v-else>
+                        {{item.finalprice / 100 | moneyFormat}}
+                      </template>
+                      <del class="discount_price" v-if="item.oprice>0"> R{{item.oprice}}</del>
+                    </p>
+
+                  </div>
+                </common-product-detail>
+              </van-col>
+            </van-row>
+          </section>
+        </template>
+
+      </scroll-view>
+      <van-popup v-model="isFilter" position="right"   :style="{ height: '100%',width:'70%' }" >
+        <filter-drawer  @doneEmit="doneHandle"
+        />
+      </van-popup>
+      <!--    显示分享狂-->
+      <van-share-sheet
+        v-model="showShare"
+        :options="shareOptions"
+        @select="selectShareHandle"
+      >
+        <template #title>
+          <div class="share-title">
+            Share to your friends
+            <van-icon name="cross" class="share-close-tag" @click="showShare = false"/>
+          </div>
+        </template>
+        <template #description>
+          <div class="share-title-description b_border">
+            <div class="g_mb_s"><span class="color_blue">Tip : </span>
+              <template v-if="ambassor==1">
+                <!--              大使-->
+                You can choose download the picture or share the product link by fackbook or whatsapp.
               </template>
-              <common-product-detail v-else
-                :item="item" :index="index"
-                @shareProductEmit="shareProductHandle"
-                @goDetailEmit="goDetailHandle"
-                v-exp-dot
-                :data-info='`productid@${item.platformproductid || null }^action@offerlist^totalcount@${pageCount || null }^position@${index}^page@keysearch^query@{"keyword":"${$route.query.keyword}","categoryid":${$route.query.categoryID || null },"thirdid":${$route.query.thirdid || null},"sortby":${recommendFilter || null},"minprice":${minPrice || null},"maxprice":${maxPrice || null}}`'
-              >
-                <div slot="price" class="d_flex d_flex_between">
-                  <p class="price-normal">
-                    <template v-if="item.price">
-                      {{item.price / 100 | moneyFormat}}
-                    </template>
-                    <template v-else>
-                      {{item.finalprice / 100 | moneyFormat}}
-                    </template>
-                    <del class="discount_price" v-if="item.oprice>0"> R{{item.oprice}}</del>
-                  </p>
-
-                </div>
-              </common-product-detail>
-            </van-col>
-
-          </van-row>
-          <div class="list_bottom" v-show="productList.length>8">
-            <van-loading size="20px" color="#fcc900" v-if="status==$config.loadingType.LOADING"><span class="font_size_loading">in loading...</span></van-loading>
-            <div class="icon iconfont icon-end color_intro text-align" v-if="status==$config.loadingType.FINISHED"/>
-          </div>
-        </div>
-
-        <section v-if="hasOwnerVisible">
-          <div class="show-owner-container-title">Move To Love</div>
-          <van-row gutter="6" >
-            <van-col span="12" v-for="(item,index) in searchOwnerList" :key="index">
-              <common-product-detail
-                :item="item" :index="index"
-                @shareProductEmit="shareProductHandle"
-                @goDetailEmit="moveGoUrlHandle"
-                v-exp-dot
-                :data-info='`productid@${item.platformproductid || null }^action@offerlist^totalcount@${pageCount || null }^position@${index}^page@categorylist^query@{"keyword":"${$route.query.keyword}","categoryid":${$route.query.categoryID || null },"thirdid":${$route.query.thirdid || null},"sortby":${recommendFilter || null},"minprice":${minPrice || null},"maxprice":${maxPrice || null}}`'
-              >
-                <div slot="price" class="d_flex d_flex_between">
-                  <p class="price-normal">
-                    <template v-if="item.price">
-                      {{item.price / 100 | moneyFormat}}
-                    </template>
-                    <template v-else>
-                      {{item.finalprice / 100 | moneyFormat}}
-                    </template>
-                    <del class="discount_price" v-if="item.oprice>0"> R{{item.oprice}}</del>
-                  </p>
-
-                </div>
-              </common-product-detail>
-            </van-col>
-          </van-row>
-        </section>
-      </template>
-
-    </scroll-view>
-    <van-popup v-model="isFilter" position="right"   :style="{ height: '100%',width:'70%' }" >
-      <filter-drawer  @doneEmit="doneHandle"
-                     />
-    </van-popup>
-    <!--    显示分享狂-->
-    <van-share-sheet
-      v-model="showShare"
-      :options="shareOptions"
-      @select="selectShareHandle"
-    >
-      <template #title>
-        <div class="share-title">
-          Share to your friends
-          <van-icon name="cross" class="share-close-tag" @click="showShare = false"/>
-        </div>
-      </template>
-      <template #description>
-        <div class="share-title-description b_border">
-          <div class="g_mb_s"><span class="color_blue">Tip : </span>
-            <template v-if="ambassor==1">
-              <!--              大使-->
-              You can choose download the picture or share the product link by fackbook or whatsapp.
-            </template>
-            <template v-else>
-              Just share pictures and descriptions,your friends won't see the actual price of the goods and shipshopshake's website
-            </template>
-          </div>
-          <div class="share-product-info">
-            <div class="share-product-info-img">
-              <van-swipe  @change="swiperChangeHandle" height="360" v-if="shareItem.images && shareItem.images.length">
-                <van-swipe-item v-for="(item, index) in shareItem.images" :key="index">
-                  <img :src="item" style="border-radius: 10px"/>
-                </van-swipe-item>
-              </van-swipe>
+              <template v-else>
+                Just share pictures and descriptions,your friends won't see the actual price of the goods and shipshopshake's website
+              </template>
             </div>
-            <div class="share-product-info-img-description">
-              <van-divider content-position="left">Commodity Description(you can edit it)</van-divider>
-              <van-field
-                class="textarea-area"
-                v-model="productDescription"
-                rows="2"
-                ref="inputRef"
-                @blur="changeDespHandle"
-                type="textarea"
-                :placeholder="productDescription"
-              />
+            <div class="share-product-info">
+              <div class="share-product-info-img">
+                <van-swipe  @change="swiperChangeHandle" height="360" v-if="shareItem.images && shareItem.images.length">
+                  <van-swipe-item v-for="(item, index) in shareItem.images" :key="index">
+                    <img :src="item" style="border-radius: 10px"/>
+                  </van-swipe-item>
+                </van-swipe>
+              </div>
+              <div class="share-product-info-img-description">
+                <van-divider content-position="left">Commodity Description(you can edit it)</van-divider>
+                <van-field
+                  class="textarea-area"
+                  v-model="productDescription"
+                  rows="2"
+                  ref="inputRef"
+                  @blur="changeDespHandle"
+                  type="textarea"
+                  :placeholder="productDescription"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </template>
-    </van-share-sheet>
-  </div>
+        </template>
+      </van-share-sheet>
+    </div>
+  </section>
+
 </template>
 
 <script>

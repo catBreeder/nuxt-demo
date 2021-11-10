@@ -11,12 +11,18 @@
     <scroll-view class="scrollHeightNoBar" style="background-color: #fff;"  @reachBottom="loadMoreHandle">
       <van-loading type="spinner" color="#fcc900" size="45px" v-if="isLoading"/>
       <div class="detain-list-content" v-else>
+
         <van-notice-bar
           :scrollable="false"
           wrapable
           mode="closeable"
-          text="Statement: This product is already in SA warehouse. It has been displayed in the warehouse over six month. And we will sell that in an unexpected cheap price. But this products we will not take any refund or return once it has been sold. You will pay extra service fee for the Ambassador."
-        />
+        >
+          <div>
+            <div class="text-align font_size_16 g_mb_m">Statement</div>
+            The product is already in CN warehouse. It has been displayed in the warehouse over six month. And we will sell that in an unexpected cheap price. But this products we will not take any refund or return once it has been sold.
+            You will pay extra service fee for the Ambassador.
+          </div>
+        </van-notice-bar>
         <template v-if="detainList.length">
           <common-product-vertical
             btnText="Checked" v-for="(item,index) in detainList" :key="index" :item="item"
@@ -46,7 +52,7 @@
     import {homeAbandonOrderListApi} from '@/api/home'
     import {getUserID} from "@/utils/memory";
     export default {
-        name: "index",
+        name: "ClearanceList",
         components:{ScrollView,CommonProductVertical,CommonEmpty},
         data(){
           return{
@@ -95,7 +101,7 @@
             this.$router.push(`/clearance/detail/${event.id}`)
           },
         },
-      mounted() {
+      created() {
         this.getDetainListHandle()
       }
     }

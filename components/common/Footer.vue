@@ -50,15 +50,6 @@ export default {
   props:{
     currentTabIndex:{type:Number}
   },
-  watch:{
-    currentTabIndex:{
-      deep:true,
-      immediate:true,
-      handler(newValue){
-        console.log('68--------',newValue);
-      }
-    }
-  },
   computed:{
     currentPage(){return getCurrentPage()}
   },

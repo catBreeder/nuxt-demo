@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section data-nosnippet="true">
 <!--    头部 start-->
     <van-sticky class="bg_white">
       <navbar-from-category :title="title" @clickLeftEvent="goBackHandle" />
@@ -117,7 +117,7 @@
         </div>
       </template>
     </van-share-sheet>
-  </div>
+  </section>
 </template>
 
 <script>

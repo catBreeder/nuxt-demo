@@ -1,5 +1,5 @@
 <template>
-  <section data-nosnippet="true">
+  <section data-nosnippet>
 <!--    头部 start-->
     <van-sticky class="bg_white">
       <navbar-from-category :title="title" @clickLeftEvent="goBackHandle" />

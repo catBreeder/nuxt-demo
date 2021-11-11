@@ -1,77 +1,80 @@
 <template>
- <div class="activity_wrapper">
-   <van-sticky z-index="1">
-     <van-nav-bar @click-left="goBackHandle">
-       <template #left>
-         <van-icon name="arrow-left"  size="24" color="#8B8989"/>
-       </template>
-       <template #title>{{activityTitle}}</template>
-     </van-nav-bar>
-   </van-sticky>
-   <template v-if="fromType=='source' || fromType=='via' ||  fromType=='kilo' || fromType=='season'">
-      <normal-model
-        @shareProductEmit="shareProductHandle"
-        @activityTitleEmit="activityTitleHandle"
-        :fromType="fromType"
-        @goOtherURLEmit="goOtherURLHandle"/>
-   </template>
-  <template v-else-if="fromType=='updated'">
-    <update-model @shareProductEmit="shareProductHandle"  @activityTitleEmit="activityTitleHandle"  @goOtherURLEmit="goOtherURLHandle"/>
-  </template>
-  <template v-else-if="fromType=='sale'">
-    <sale-model  @activityTitleEmit="activityTitleHandle" @shareProductEmit="shareProductHandle"  @likeDetailEmit="likeDetailHandle" @goOtherURLEmit="goOtherURLHandle"/>
-  </template>
-   <!--    显示分享狂-->
-   <van-share-sheet
-     v-model="showShare"
-     cancel-text="close"
-     :options="shareOptions"
-     @select="selectShareHandle"
-     @cancel="showShare = false"
-   >
-     <template #title>
-       <div class="share-title">
-         Share to your friends
-         <van-icon name="cross" class="share-close-tag" @click="showShare = false"/>
-       </div>
-     </template>
-     <template #description>
-       <div class="share-title-description b_border">
-         <div class="g_mb_s">
-           <span class="color_blue">Tip :</span>
-           <template v-if="ambassor==1">
-             <!--              大使-->
-             You can choose download the picture or share the product link by fackbook or whatsapp.
-           </template>
-           <template v-else>
-             Just share pictures and descriptions,your friends won't see the actual price of the goods and shipshopshake's website
-           </template>
-         </div>
-         <div class="share-product-info">
-           <div class="share-product-info-img">
-             <van-swipe  @change="swiperChangeHandle"  v-if="shareItem && shareItem.images && shareItem.images.length">
-               <van-swipe-item v-for="(item, index) in shareItem.images" :key="index">
-                 <img :src="item" style="border-radius: 10px"/>
-               </van-swipe-item>
-             </van-swipe>
-           </div>
-           <div class="share-product-info-img-description">
-             <van-divider content-position="left">Commodity Description(you can edit it)</van-divider>
-             <van-field
-               v-model="productDescription"
-               rows="2"
-               ref="inputRef"
-               @blur="changeDespHandle"
-               type="textarea"
-               :placeholder="productDescription"
-               show-word-limit
-             />
-           </div>
-         </div>
-       </div>
-     </template>
-   </van-share-sheet>
- </div>
+  <section  data-nosnippet>
+    <div class="activity_wrapper">
+      <van-sticky z-index="1">
+        <van-nav-bar @click-left="goBackHandle">
+          <template #left>
+            <van-icon name="arrow-left"  size="24" color="#8B8989"/>
+          </template>
+          <template #title>{{activityTitle}}</template>
+        </van-nav-bar>
+      </van-sticky>
+      <template v-if="fromType=='source' || fromType=='via' ||  fromType=='kilo' || fromType=='season'">
+        <normal-model
+          @shareProductEmit="shareProductHandle"
+          @activityTitleEmit="activityTitleHandle"
+          :fromType="fromType"
+          @goOtherURLEmit="goOtherURLHandle"/>
+      </template>
+      <template v-else-if="fromType=='updated'">
+        <update-model @shareProductEmit="shareProductHandle"  @activityTitleEmit="activityTitleHandle"  @goOtherURLEmit="goOtherURLHandle"/>
+      </template>
+      <template v-else-if="fromType=='sale'">
+        <sale-model  @activityTitleEmit="activityTitleHandle" @shareProductEmit="shareProductHandle"  @likeDetailEmit="likeDetailHandle" @goOtherURLEmit="goOtherURLHandle"/>
+      </template>
+      <!--    显示分享狂-->
+      <van-share-sheet
+        v-model="showShare"
+        cancel-text="close"
+        :options="shareOptions"
+        @select="selectShareHandle"
+        @cancel="showShare = false"
+      >
+        <template #title>
+          <div class="share-title">
+            Share to your friends
+            <van-icon name="cross" class="share-close-tag" @click="showShare = false"/>
+          </div>
+        </template>
+        <template #description>
+          <div class="share-title-description b_border">
+            <div class="g_mb_s">
+              <span class="color_blue">Tip :</span>
+              <template v-if="ambassor==1">
+                <!--              大使-->
+                You can choose download the picture or share the product link by fackbook or whatsapp.
+              </template>
+              <template v-else>
+                Just share pictures and descriptions,your friends won't see the actual price of the goods and shipshopshake's website
+              </template>
+            </div>
+            <div class="share-product-info">
+              <div class="share-product-info-img">
+                <van-swipe  @change="swiperChangeHandle"  v-if="shareItem && shareItem.images && shareItem.images.length">
+                  <van-swipe-item v-for="(item, index) in shareItem.images" :key="index">
+                    <img :src="item" style="border-radius: 10px"/>
+                  </van-swipe-item>
+                </van-swipe>
+              </div>
+              <div class="share-product-info-img-description">
+                <van-divider content-position="left">Commodity Description(you can edit it)</van-divider>
+                <van-field
+                  v-model="productDescription"
+                  rows="2"
+                  ref="inputRef"
+                  @blur="changeDespHandle"
+                  type="textarea"
+                  :placeholder="productDescription"
+                  show-word-limit
+                />
+              </div>
+            </div>
+          </div>
+        </template>
+      </van-share-sheet>
+    </div>
+  </section>
+
 </template>
 <script>
   /*

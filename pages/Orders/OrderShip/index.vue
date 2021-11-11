@@ -827,7 +827,7 @@ import {accountBasicInfoApi} from '@/api/account'
       font-size:18px;
     }
     .remove-intro{
-      font-size:18px;
+      font-size:16px;
       margin:30px 0;
     }
   }
